@@ -1,6 +1,6 @@
 # School4AI / Hoc vien AI
 
-Plain static bilingual website for the School4AI / Hoc vien AI community learning idea in Yên Bái, Vietnam.
+Plain static bilingual website for the School4AI / Hoc vien AI community learning idea starting in Yên Bái, Vietnam, with the aim of growing into more locations.
 
 ## Files
 
