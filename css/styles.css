@@ -821,6 +821,11 @@ p {
     width: 154px;
   }
 
+  html[lang="en"] .brand,
+  html[lang="en"] .brand img {
+    width: 132px;
+  }
+
   .brand {
     grid-column: 1;
     grid-row: 1;

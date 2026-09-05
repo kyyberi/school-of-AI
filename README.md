@@ -1,6 +1,6 @@
-# School of AI / Hoc vien AI
+# School4AI / Hoc vien AI
 
-Plain static bilingual website for the School of AI community learning idea in Yên Bái, Vietnam.
+Plain static bilingual website for the School4AI / Hoc vien AI community learning idea in Yên Bái, Vietnam.
 
 ## Files
 
@@ -12,5 +12,7 @@ Plain static bilingual website for the School of AI community learning idea in Y
 ## Editing
 
 Open `index.html` directly in a browser or upload the folder to any static web server.
+
+The intended custom domain is `school4ai.net`.
 
 There is no JavaScript app, install step, build command, backend, form, account system, or database.
