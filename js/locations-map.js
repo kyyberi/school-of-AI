@@ -400,9 +400,19 @@
     zoom: 5.6,
     minZoom: 5,
     maxZoom: 14,
-    scrollWheelZoom: true
+    zoomSnap: 0.25,
+    zoomDelta: 0.5,
+    scrollWheelZoom: true,
+    maxBoundsViscosity: 0.48
   });
   mapElement._schoolMap = map;
+
+  const maskPane = map.createPane("vietnam-mask");
+  const outlinePane = map.createPane("vietnam-outline");
+  maskPane.style.zIndex = 410;
+  maskPane.style.pointerEvents = "none";
+  outlinePane.style.zIndex = 420;
+  outlinePane.style.pointerEvents = "none";
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -451,6 +461,93 @@
       .toLocaleLowerCase("vi")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getVietnamBoundary() {
+    const boundary = window.school4aiVietnamBoundary;
+    if (!boundary || !boundary.features || !boundary.features.length) {
+      return null;
+    }
+    return boundary;
+  }
+
+  function getOuterRings(geojson) {
+    const features = geojson.type === "FeatureCollection" ? geojson.features : [geojson];
+    return features.flatMap((feature) => {
+      const geometry = feature.geometry || feature;
+      if (!geometry) {
+        return [];
+      }
+      if (geometry.type === "Polygon") {
+        return geometry.coordinates.length ? [geometry.coordinates[0]] : [];
+      }
+      if (geometry.type === "MultiPolygon") {
+        return geometry.coordinates
+          .filter((polygon) => polygon.length)
+          .map((polygon) => polygon[0]);
+      }
+      return [];
+    });
+  }
+
+  function createOutsideVietnamMask(geojson) {
+    const worldRing = [
+      [-180, -90],
+      [-180, 90],
+      [180, 90],
+      [180, -90],
+      [-180, -90]
+    ];
+    return {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Polygon",
+        coordinates: [worldRing, ...getOuterRings(geojson)]
+      }
+    };
+  }
+
+  function applyVietnamFocus() {
+    const boundary = getVietnamBoundary();
+    if (!boundary) {
+      return false;
+    }
+
+    L.geoJSON(createOutsideVietnamMask(boundary), {
+      pane: "vietnam-mask",
+      interactive: false,
+      style: {
+        stroke: false,
+        fillColor: "#fbf7ed",
+        fillOpacity: 0.56,
+        fillRule: "evenodd"
+      }
+    }).addTo(map);
+
+    const outlineLayer = L.geoJSON(boundary, {
+      pane: "vietnam-outline",
+      interactive: false,
+      style: {
+        color: "#277653",
+        weight: 2.4,
+        opacity: 0.78,
+        fillOpacity: 0,
+        lineJoin: "round"
+      }
+    }).addTo(map);
+
+    const vietnamBounds = outlineLayer.getBounds();
+    if (!vietnamBounds.isValid()) {
+      return false;
+    }
+    map.fitBounds(vietnamBounds, {
+      paddingTopLeft: [54, 46],
+      paddingBottomRight: [54, 54],
+      maxZoom: 7
+    });
+    map.setMaxBounds(vietnamBounds.pad(0.58));
+    return true;
   }
 
   function openLocation(location) {
@@ -599,8 +696,11 @@
     });
   }
 
+  const vietnamFocusApplied = applyVietnamFocus();
   map.addLayer(clusterGroup);
-  map.fitBounds(clusterGroup.getBounds().pad(0.18));
+  if (!vietnamFocusApplied) {
+    map.fitBounds(clusterGroup.getBounds().pad(0.18));
+  }
 
   populateCityFilter();
   renderDirectory();

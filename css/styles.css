@@ -315,6 +315,18 @@ p {
   max-width: 100%;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.hero-actions .button {
+  margin-top: 0;
+}
+
 .button.secondary {
   background: var(--gold);
   color: #251b00;
@@ -1091,72 +1103,95 @@ div.plain-note {
 
 .map-intro {
   display: grid;
-  grid-template-columns: minmax(420px, 0.58fr) minmax(320px, 0.42fr);
-  gap: clamp(34px, 6vw, 96px);
+  grid-template-columns: minmax(520px, 0.64fr) minmax(300px, 0.36fr);
+  gap: clamp(36px, 7vw, 116px);
   align-items: start;
   max-width: 1760px;
   margin-inline: auto;
-  padding: clamp(40px, 5vw, 76px) clamp(20px, 5vw, 80px) clamp(50px, 6vw, 78px);
+  padding: clamp(44px, 5.2vw, 82px) clamp(20px, 5vw, 80px) clamp(34px, 4vw, 54px);
   background: var(--paper);
 }
 
 .map-kicker {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   color: var(--green);
-  font-size: 0.95rem;
-  font-weight: 850;
+  font-size: 0.82rem;
+  font-weight: 950;
 }
 
 .map-intro h1 {
-  max-width: 920px;
+  max-width: 1040px;
   color: var(--blue-dark);
-  font-size: clamp(3.25rem, 4.7vw, 4.25rem);
-  line-height: 1.02;
+  font-size: clamp(3.35rem, 5vw, 4.65rem);
+  line-height: 0.98;
 }
 
 .map-intro h1 span {
   display: block;
-  margin-bottom: 4px;
-  font-size: 0.74em;
-  line-height: 1.08;
+  margin-bottom: 2px;
+  font-size: 0.98em;
+  line-height: 0.98;
 }
 
 .map-copy-column {
-  max-width: 520px;
+  max-width: 500px;
   padding-bottom: 4px;
 }
 
 .map-copy-column p {
   margin-top: 0;
   color: var(--blue-ink);
-  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
-  line-height: 1.5;
+  font-size: clamp(1rem, 1.12vw, 1.08rem);
+  line-height: 1.42;
 }
 
 .map-copy-column p + p {
-  margin-top: 24px;
+  margin-top: 18px;
   color: var(--blue-dark);
   font-weight: 900;
 }
 
-.text-action {
+.text-action,
+.map-action {
   display: inline-block;
   margin-top: 8px;
+}
+
+.text-action {
   color: var(--blue-dark);
   font-weight: 900;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
 
+.map-action {
+  min-height: 52px;
+  padding: 15px 24px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 0.96rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.map-action:hover,
+.map-action:focus-visible {
+  background: var(--blue-dark);
+}
+
+.map-action span {
+  margin-left: 10px;
+}
+
 .map-workspace {
   position: relative;
   max-width: 1760px;
   margin-inline: auto;
-  padding: 12px clamp(20px, 5vw, 80px) clamp(36px, 4vw, 62px);
+  padding: 0 clamp(20px, 5vw, 80px) clamp(36px, 4vw, 62px);
 }
 
 .map-prelude {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: rgba(7, 27, 61, 0.7);
   font-size: 0.95rem;
   font-weight: 800;
@@ -1709,6 +1744,11 @@ div.plain-note {
     max-width: 680px;
   }
 
+  .map-intro h1 {
+    max-width: 840px;
+    font-size: clamp(3rem, 7vw, 4.1rem);
+  }
+
   .directory-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1930,6 +1970,10 @@ div.plain-note {
     align-self: flex-start;
   }
 
+  .hero-actions {
+    align-items: flex-start;
+  }
+
   .check-list,
   .value-list,
   .photo-moments,
@@ -2004,7 +2048,7 @@ div.plain-note {
   }
 
   .map-intro {
-    padding: 28px 16px 24px;
+    padding: 30px 16px 24px;
   }
 
   .location-directory {
@@ -2021,7 +2065,16 @@ div.plain-note {
   }
 
   .map-intro h1 {
-    font-size: clamp(2.2rem, 10vw, 3rem);
+    font-size: clamp(2.2rem, 9.8vw, 3rem);
+  }
+
+  .map-intro h1 span {
+    font-size: 0.92em;
+  }
+
+  .map-action {
+    min-height: 46px;
+    padding: 13px 18px;
   }
 
   .map-workspace {
