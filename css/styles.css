@@ -1501,10 +1501,11 @@ div.plain-note {
 }
 
 .directory-heading h2 {
-  max-width: 720px;
+  max-width: none;
   color: var(--blue-dark);
   font-size: clamp(2.15rem, 3.35vw, 3.55rem);
   line-height: 0.98;
+  white-space: nowrap;
 }
 
 .directory-heading h2 span {
@@ -2437,6 +2438,10 @@ div.plain-note {
 
   .directory-list {
     grid-template-columns: 1fr;
+  }
+
+  .directory-heading h2 {
+    white-space: normal;
   }
 
   .directory-item {
