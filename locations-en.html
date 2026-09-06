@@ -67,9 +67,37 @@
           <p class="panel-eyebrow">How to use the map</p>
           <h2>Find your area</h2>
           <p>Drag the map, zoom in and out, and click a marker. At higher zoom levels, nearby places are bundled into numbered circles.</p>
-          <p>Markers are invitations. They do not mean an activity is already scheduled there.</p>
+          <ul class="map-legend" aria-label="Map marker legend">
+            <li><span aria-hidden="true"></span>School4AI invitation city</li>
+            <li><span class="partner-dot" aria-hidden="true"></span>Possible English school partner</li>
+          </ul>
+          <p>Markers are invitations or partner leads. They do not mean an activity is already scheduled there.</p>
           <a class="button primary whatsapp-link" href="https://wa.me/971509718065?text=Hello%20Jarkko.%20I%20want%20to%20help%20start%20School4AI%20in%20my%20area.">Contact coordinator</a>
         </aside>
+      </section>
+
+      <section class="location-directory" aria-labelledby="directory-title">
+        <div class="directory-heading">
+          <div>
+            <p class="story-label">Possible location directory</p>
+            <h2 id="directory-title">Find cities, towns, and possible partners</h2>
+          </div>
+          <p>Search the map data or filter by city/town. Cards include School4AI invitation cities and English-language school partner leads.</p>
+        </div>
+        <form class="directory-filters" role="search" aria-label="Filter possible locations">
+          <label>
+            <span>Search</span>
+            <input id="location-search" type="search" autocomplete="off" placeholder="Search by school, city, or address">
+          </label>
+          <label>
+            <span>City or town</span>
+            <select id="location-city-filter">
+              <option value="">All cities and towns</option>
+            </select>
+          </label>
+        </form>
+        <p id="location-result-count" class="directory-count" aria-live="polite"></p>
+        <div id="location-directory-list" class="directory-grid" aria-live="polite"></div>
       </section>
     </main>
 

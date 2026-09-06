@@ -67,9 +67,37 @@
           <p class="panel-eyebrow">Cách dùng bản đồ</p>
           <h2>Tìm khu vực của bạn</h2>
           <p>Kéo bản đồ, phóng to hoặc thu nhỏ, rồi bấm vào một điểm đánh dấu. Khi thu nhỏ, các địa điểm gần nhau được gom thành vòng tròn có số lượng.</p>
-          <p>Các điểm đánh dấu là lời mời tham gia. Chúng không có nghĩa là hoạt động đã được lên lịch ở đó.</p>
+          <ul class="map-legend" aria-label="Chú giải điểm đánh dấu bản đồ">
+            <li><span aria-hidden="true"></span>Thành phố mời bắt đầu School4AI</li>
+            <li><span class="partner-dot" aria-hidden="true"></span>Trung tâm tiếng Anh tiềm năng</li>
+          </ul>
+          <p>Các điểm đánh dấu là lời mời tham gia hoặc đầu mối đối tác. Chúng không có nghĩa là hoạt động đã được lên lịch ở đó.</p>
           <a class="button primary whatsapp-link" href="https://wa.me/971509718065?text=Xin%20chao%20Jarkko.%20Toi%20muon%20ho%20tro%20bat%20dau%20School4AI%20tai%20khu%20vuc%20cua%20toi.">Liên hệ người điều phối</a>
         </aside>
+      </section>
+
+      <section class="location-directory" aria-labelledby="directory-title">
+        <div class="directory-heading">
+          <div>
+            <p class="story-label">Danh bạ địa điểm tiềm năng</p>
+            <h2 id="directory-title">Tìm thành phố, thị xã và đối tác tiềm năng</h2>
+          </div>
+          <p>Tìm trong dữ liệu bản đồ hoặc lọc theo thành phố/thị xã. Thẻ bao gồm các thành phố mời bắt đầu School4AI và các trung tâm tiếng Anh tiềm năng.</p>
+        </div>
+        <form class="directory-filters" role="search" aria-label="Lọc địa điểm tiềm năng">
+          <label>
+            <span>Tìm kiếm</span>
+            <input id="location-search" type="search" autocomplete="off" placeholder="Tìm theo trường, thành phố hoặc địa chỉ">
+          </label>
+          <label>
+            <span>Thành phố hoặc thị xã</span>
+            <select id="location-city-filter">
+              <option value="">Tất cả thành phố và thị xã</option>
+            </select>
+          </label>
+        </form>
+        <p id="location-result-count" class="directory-count" aria-live="polite"></p>
+        <div id="location-directory-list" class="directory-grid" aria-live="polite"></div>
       </section>
     </main>
 
