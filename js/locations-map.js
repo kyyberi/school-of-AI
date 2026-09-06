@@ -15,8 +15,6 @@
       invitationCity: "Possible School4AI city",
       partnerCard: "English school partner",
       priorityCandidate: "Priority candidate",
-      strongLeads: "Strong partner leads",
-      otherCities: "Other cities to explore",
       partnerReason: "Useful because there is already a local English-school partner with access to students, parents, teachers, and possible space.",
       cityReason: "A possible community location for future School4AI activity.",
       localLeadReason: "A useful local lead for students, parents, teachers, and possible space.",
@@ -50,8 +48,6 @@
       invitationCity: "Thành phố School4AI tiềm năng",
       partnerCard: "Đối tác trung tâm tiếng Anh",
       priorityCandidate: "Ứng viên ưu tiên",
-      strongLeads: "Đầu mối đối tác mạnh",
-      otherCities: "Các thành phố khác để tìm hiểu",
       partnerReason: "Hữu ích vì đã có đầu mối trung tâm tiếng Anh địa phương với khả năng tiếp cận học sinh, phụ huynh, giáo viên và địa điểm.",
       cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
       localLeadReason: "Một đầu mối địa phương hữu ích cho học sinh, phụ huynh, giáo viên và địa điểm có thể sử dụng.",
@@ -845,7 +841,7 @@
     });
   }
 
-  function renderDirectoryGroup(title, items) {
+  function renderDirectoryItems(items) {
     if (!items.length) {
       return "";
     }
@@ -874,12 +870,7 @@
         </article>
       `;
     }).join("");
-    return `
-      <section class="directory-group">
-        <h3>${title}</h3>
-        <div class="directory-list">${entries}</div>
-      </section>
-    `;
+    return `<div class="directory-list">${entries}</div>`;
   }
 
   function renderDirectory() {
@@ -892,18 +883,11 @@
       directoryList.innerHTML = `<p class="directory-empty">${content.noResults}</p>`;
       return;
     }
-    const strongLeads = filtered.filter((location) => location.statusValue === "strong");
-    const otherCities = filtered.filter((location) => location.statusValue !== "strong");
-    directoryList.innerHTML = [
-      renderDirectoryGroup(content.strongLeads, strongLeads),
-      renderDirectoryGroup(content.otherCities, otherCities)
-    ].join("");
+    directoryList.innerHTML = renderDirectoryItems(filtered);
     directoryList.querySelectorAll("[data-directory-index]").forEach((button) => {
       button.addEventListener("click", () => {
         const card = button.closest(".directory-item");
-        const group = button.closest(".directory-group");
-        const items = group && group.querySelector("h3").textContent === content.strongLeads ? strongLeads : otherCities;
-        const location = items[Number(button.dataset.directoryIndex)];
+        const location = filtered[Number(button.dataset.directoryIndex)];
         renderLocationDetail(location);
         map.flyTo([location.lat, location.lng], Math.max(map.getZoom(), 8), { duration: 0.7 });
         document.querySelector(".map-workspace").scrollIntoView({ behavior: "smooth", block: "start" });

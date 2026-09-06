@@ -1602,18 +1602,11 @@ div.plain-note {
   margin-top: 0;
 }
 
-.directory-group > h3 {
-  margin: 0;
-  color: var(--blue-dark);
-  font-size: clamp(1.25rem, 2vw, 1.7rem);
-  line-height: 1.15;
-}
-
 .directory-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 14px;
+  margin-top: 0;
 }
 
 .directory-item {
