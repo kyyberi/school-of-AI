@@ -1102,13 +1102,10 @@ div.plain-note {
 }
 
 .map-intro {
-  display: grid;
-  grid-template-columns: minmax(520px, 0.64fr) minmax(300px, 0.36fr);
-  gap: clamp(36px, 7vw, 116px);
-  align-items: start;
+  display: block;
   max-width: 1760px;
   margin-inline: auto;
-  padding: clamp(44px, 5.2vw, 82px) clamp(20px, 5vw, 80px) clamp(34px, 4vw, 54px);
+  padding: clamp(42px, 5vw, 76px) clamp(20px, 5vw, 80px) clamp(26px, 3.4vw, 44px);
   background: var(--paper);
 }
 
@@ -1120,9 +1117,9 @@ div.plain-note {
 }
 
 .map-intro h1 {
-  max-width: 1040px;
+  max-width: 1320px;
   color: var(--blue-dark);
-  font-size: clamp(3.35rem, 5vw, 4.65rem);
+  font-size: clamp(3.2rem, 4.7vw, 4.45rem);
   line-height: 0.98;
 }
 
@@ -1134,8 +1131,8 @@ div.plain-note {
 }
 
 .map-copy-column {
-  max-width: 500px;
-  padding-bottom: 4px;
+  max-width: 980px;
+  margin-top: 24px;
 }
 
 .map-copy-column p {
@@ -1146,7 +1143,7 @@ div.plain-note {
 }
 
 .map-copy-column p + p {
-  margin-top: 18px;
+  margin-top: 16px;
   color: var(--blue-dark);
   font-weight: 900;
 }
