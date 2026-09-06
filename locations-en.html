@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>School4AI Locations | Vietnam map</title>
+    <meta name="description" content="Explore possible School4AI locations in Vietnam and contact us to help start a local activity.">
+    <meta property="og:title" content="School4AI Locations | Vietnam map">
+    <meta property="og:description" content="Explore possible School4AI locations in Vietnam and contact us to help start a local activity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://school4ai.net/locations-en.html">
+    <meta property="og:image" content="assets/hero-community-yen-bai.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="School4AI Locations | Vietnam map">
+    <meta name="twitter:description" content="Explore possible School4AI locations in Vietnam and contact us to help start a local activity.">
+    <meta name="twitter:image" content="assets/hero-community-yen-bai.webp">
+    <link rel="canonical" href="https://school4ai.net/locations-en.html">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/logo-en.webp" as="image">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body class="map-page" data-map-lang="en">
+    <header class="site-header">
+      <a class="brand" href="en.html#top" aria-label="School4AI">
+        <img id="site-logo" src="assets/logo-en.webp" alt="School4AI, English Language">
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="en.html#idea">The Idea</a>
+        <a href="en.html#format">Format</a>
+        <a href="en.html#parents">Parents</a>
+        <a href="locations-en.html" aria-current="page">Locations</a>
+        <a href="en.html#about">About</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <a href="locations.html">VI</a>
+        <span aria-hidden="true">/</span>
+        <a href="locations-en.html" class="active" aria-current="page">EN</a>
+      </div>
+      <button class="mobile-menu-button" type="button" popovertarget="mobile-menu-en" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="mobile-menu-panel" id="mobile-menu-en" popover aria-label="Mobile navigation">
+        <a href="en.html#idea">The Idea</a>
+        <a href="en.html#format">Format</a>
+        <a href="en.html#parents">Parents</a>
+        <a href="locations-en.html" aria-current="page">Locations</a>
+        <a href="en.html#about">About</a>
+      </nav>
+    </header>
+
+    <main id="top" class="locations-shell">
+      <section class="map-intro" aria-labelledby="map-title">
+        <div>
+          <p class="story-label">Vietnam location map</p>
+          <h1 id="map-title">Where could School4AI start next?</h1>
+        </div>
+        <div class="copy-stack">
+          <p>We are starting from Yên Bái and looking for local coordinators, parents, teachers, companies, and community helpers in other places.</p>
+          <p>Zoom into Vietnam, open a city marker, and contact us if you want to help start a School4AI weekend in that area.</p>
+        </div>
+      </section>
+
+      <section class="map-workspace" aria-label="School4AI Vietnam location map">
+        <div id="locations-map" class="locations-map" role="application" aria-label="Interactive map of possible School4AI locations in Vietnam"></div>
+        <aside class="map-panel" aria-label="Map guidance">
+          <p class="panel-eyebrow">How to use the map</p>
+          <h2>Find your area</h2>
+          <p>Drag the map, zoom in and out, and click a marker. At higher zoom levels, nearby places are bundled into numbered circles.</p>
+          <p>Markers are invitations. They do not mean an activity is already scheduled there.</p>
+          <a class="button primary whatsapp-link" href="https://wa.me/971509718065?text=Hello%20Jarkko.%20I%20want%20to%20help%20start%20School4AI%20in%20my%20area.">Contact coordinator</a>
+        </aside>
+      </section>
+    </main>
+
+    <dialog id="location-dialog" class="location-dialog" aria-labelledby="location-dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" value="close" aria-label="Close">x</button>
+      </form>
+      <div id="location-dialog-content"></div>
+    </dialog>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="js/locations-map.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Địa điểm School4AI | Bản đồ Việt Nam</title>
+    <meta name="description" content="Khám phá các địa điểm có thể bắt đầu School4AI tại Việt Nam và liên hệ để cùng khởi động hoạt động ở địa phương.">
+    <meta property="og:title" content="Địa điểm School4AI | Bản đồ Việt Nam">
+    <meta property="og:description" content="Khám phá các địa điểm có thể bắt đầu School4AI tại Việt Nam và liên hệ để cùng khởi động hoạt động ở địa phương.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://school4ai.net/locations.html">
+    <meta property="og:image" content="assets/hero-community-yen-bai.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Địa điểm School4AI | Bản đồ Việt Nam">
+    <meta name="twitter:description" content="Khám phá các địa điểm có thể bắt đầu School4AI tại Việt Nam và liên hệ để cùng khởi động hoạt động ở địa phương.">
+    <meta name="twitter:image" content="assets/hero-community-yen-bai.webp">
+    <link rel="canonical" href="https://school4ai.net/locations.html">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/logo-vi.webp" as="image">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body class="map-page" data-map-lang="vi">
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="School of AI">
+        <img id="site-logo" src="assets/logo-vi.webp" alt="Hoc vien AI, Tieng Anh">
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html#idea">Ý tưởng</a>
+        <a href="index.html#format">Hình thức</a>
+        <a href="index.html#parents">Phụ huynh</a>
+        <a href="locations.html" aria-current="page">Địa điểm</a>
+        <a href="index.html#about">Giới thiệu</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <a href="locations.html" class="active" aria-current="page">VI</a>
+        <span aria-hidden="true">/</span>
+        <a href="locations-en.html">EN</a>
+      </div>
+      <button class="mobile-menu-button" type="button" popovertarget="mobile-menu-vi" aria-label="Mở menu"><span></span><span></span><span></span></button>
+      <nav class="mobile-menu-panel" id="mobile-menu-vi" popover aria-label="Điều hướng di động">
+        <a href="index.html#idea">Ý tưởng</a>
+        <a href="index.html#format">Hình thức</a>
+        <a href="index.html#parents">Phụ huynh</a>
+        <a href="locations.html" aria-current="page">Địa điểm</a>
+        <a href="index.html#about">Giới thiệu</a>
+      </nav>
+    </header>
+
+    <main id="top" class="locations-shell">
+      <section class="map-intro" aria-labelledby="map-title">
+        <div>
+          <p class="story-label">Bản đồ địa điểm Việt Nam</p>
+          <h1 id="map-title">School4AI có thể bắt đầu ở đâu tiếp theo?</h1>
+        </div>
+        <div class="copy-stack">
+          <p>Chúng tôi bắt đầu từ Yên Bái và đang tìm người điều phối địa phương, phụ huynh, giáo viên, doanh nghiệp và người hỗ trợ cộng đồng ở những nơi khác.</p>
+          <p>Hãy phóng to bản đồ Việt Nam, mở điểm đánh dấu thành phố và liên hệ nếu bạn muốn giúp khởi động một cuối tuần School4AI tại khu vực đó.</p>
+        </div>
+      </section>
+
+      <section class="map-workspace" aria-label="Bản đồ địa điểm School4AI tại Việt Nam">
+        <div id="locations-map" class="locations-map" role="application" aria-label="Bản đồ tương tác các địa điểm có thể tổ chức School4AI tại Việt Nam"></div>
+        <aside class="map-panel" aria-label="Hướng dẫn bản đồ">
+          <p class="panel-eyebrow">Cách dùng bản đồ</p>
+          <h2>Tìm khu vực của bạn</h2>
+          <p>Kéo bản đồ, phóng to hoặc thu nhỏ, rồi bấm vào một điểm đánh dấu. Khi thu nhỏ, các địa điểm gần nhau được gom thành vòng tròn có số lượng.</p>
+          <p>Các điểm đánh dấu là lời mời tham gia. Chúng không có nghĩa là hoạt động đã được lên lịch ở đó.</p>
+          <a class="button primary whatsapp-link" href="https://wa.me/971509718065?text=Xin%20chao%20Jarkko.%20Toi%20muon%20ho%20tro%20bat%20dau%20School4AI%20tai%20khu%20vuc%20cua%20toi.">Liên hệ người điều phối</a>
+        </aside>
+      </section>
+    </main>
+
+    <dialog id="location-dialog" class="location-dialog" aria-labelledby="location-dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" value="close" aria-label="Đóng">x</button>
+      </form>
+      <div id="location-dialog-content"></div>
+    </dialog>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="js/locations-map.js"></script>
+  </body>
+</html>
