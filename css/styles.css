@@ -340,6 +340,172 @@ p {
   display: none;
 }
 
+.story-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.42fr) minmax(360px, 0.58fr);
+  gap: clamp(44px, 6vw, 104px);
+  align-items: start;
+  max-width: 1760px;
+  margin-inline: auto;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.story-section:nth-of-type(odd) {
+  background: var(--paper);
+  grid-template-columns: minmax(360px, 0.58fr) minmax(280px, 0.42fr);
+}
+
+.story-heading {
+  max-width: 680px;
+}
+
+.story-heading p {
+  max-width: 620px;
+  color: var(--blue-ink);
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+}
+
+.story-body {
+  max-width: 880px;
+}
+
+.anchor-marker {
+  position: absolute;
+  top: 0;
+}
+
+.value-list,
+.simple-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 34px;
+}
+
+.value-list li,
+.simple-list li {
+  color: var(--blue-dark);
+  font-weight: 900;
+  line-height: 1.28;
+}
+
+.value-list li {
+  padding-top: 12px;
+  border-top: 4px solid var(--green);
+  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+}
+
+.plain-note {
+  margin-top: 30px;
+  color: var(--blue-dark);
+  font-weight: 850;
+}
+
+div.plain-note {
+  display: grid;
+  gap: 8px;
+}
+
+.plain-note p,
+.plain-note {
+  font-size: clamp(1.02rem, 1.18vw, 1.12rem);
+}
+
+.plain-note p {
+  margin: 0;
+}
+
+.day-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-list li {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.22fr) minmax(0, 0.78fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.day-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.day-list strong {
+  color: var(--red);
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.day-list span {
+  color: var(--blue-dark);
+  font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+  font-weight: 900;
+  line-height: 1.24;
+}
+
+.simple-blocks {
+  display: grid;
+  gap: 24px;
+}
+
+.simple-blocks article {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.simple-blocks article:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.simple-blocks h3 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(1.12rem, 1.7vw, 1.42rem);
+  line-height: 1.18;
+}
+
+.simple-blocks p,
+.compact-copy p {
+  max-width: 760px;
+}
+
+.simple-blocks p {
+  margin-top: 8px;
+}
+
+.compact-copy {
+  margin-top: 32px;
+}
+
+.compact-copy p {
+  margin-top: 12px;
+  font-size: clamp(1rem, 1.12vw, 1.08rem);
+}
+
+.two-column-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 30px;
+  margin-bottom: 26px;
+}
+
+.two-column-list li {
+  padding-top: 10px;
+  border-top: 3px solid var(--gold);
+}
+
 .format-section,
 .take-home-section,
 .intro-section,
@@ -760,9 +926,9 @@ p {
 
 .site-footer {
   display: grid;
-  grid-template-columns: 170px 1fr auto;
-  align-items: center;
-  gap: 24px;
+  grid-template-columns: 170px minmax(220px, 1fr) auto;
+  align-items: start;
+  gap: 24px 34px;
   background: #071b3d;
   color: var(--white);
 }
@@ -779,6 +945,26 @@ p {
 .site-footer a {
   color: var(--gold);
   font-weight: 850;
+}
+
+.footer-disclaimer {
+  grid-column: 2 / -1;
+  max-width: 980px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.footer-disclaimer h2 {
+  margin: 0 0 12px;
+  color: var(--white);
+  font-size: clamp(1.05rem, 1.4vw, 1.32rem);
+  line-height: 1.2;
+}
+
+.footer-disclaimer p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.94rem;
 }
 
 @media (max-width: 1060px) {
@@ -805,6 +991,7 @@ p {
   }
 
   .hero,
+  .story-section,
   .format-section,
   .take-home-section,
   .intro-section,
@@ -816,6 +1003,10 @@ p {
   .contact-section,
   .disclaimer-section,
   .site-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .story-section:nth-of-type(odd) {
     grid-template-columns: 1fr;
   }
 
@@ -856,6 +1047,11 @@ p {
 
   .site-footer {
     align-items: start;
+  }
+
+  .site-footer,
+  .footer-disclaimer {
+    grid-column: 1;
   }
 }
 
@@ -1058,6 +1254,9 @@ p {
   }
 
   .check-list,
+  .value-list,
+  .day-list li,
+  .two-column-list,
   .certificate-panel .compact-list,
   .parent-safety-list,
   .parent-help-list,
@@ -1065,6 +1264,11 @@ p {
   .take-home-list,
   .support-grid {
     grid-template-columns: 1fr;
+  }
+
+  .day-list li {
+    gap: 6px;
+    padding: 18px 0;
   }
 
   .about-visual {
