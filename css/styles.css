@@ -1496,15 +1496,6 @@ div.plain-note {
   background: linear-gradient(180deg, rgba(251, 247, 237, 0) 0%, rgba(243, 183, 25, 0.08) 100%);
 }
 
-.directory-kicker {
-  margin: 0 0 8px;
-  color: var(--green);
-  font-size: 0.72rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .directory-heading {
   display: block;
 }
@@ -1517,8 +1508,8 @@ div.plain-note {
 }
 
 .directory-heading h2 span {
-  color: var(--green);
-  font-size: 0.72em;
+  color: inherit;
+  font-size: inherit;
   white-space: nowrap;
 }
 

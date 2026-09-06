@@ -828,7 +828,7 @@
       element.textContent = total;
     });
     directoryTotalElements.forEach((element) => {
-      element.textContent = `(${total})`;
+      element.textContent = total;
     });
   }
 
