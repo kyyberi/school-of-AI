@@ -1716,10 +1716,7 @@ div.plain-note {
 }
 
 .apps-intro {
-  display: grid;
-  grid-template-columns: minmax(360px, 0.52fr) minmax(320px, 0.48fr);
-  gap: clamp(36px, 7vw, 112px);
-  align-items: end;
+  display: block;
   max-width: 1760px;
   margin-inline: auto;
   padding: clamp(42px, 5.4vw, 78px) clamp(20px, 5vw, 80px) clamp(30px, 3.8vw, 52px);
@@ -1727,12 +1724,13 @@ div.plain-note {
 }
 
 .apps-intro h1 {
-  max-width: 780px;
+  max-width: 1280px;
   font-size: clamp(2.9rem, 4.4vw, 4.45rem);
 }
 
 .apps-intro-copy {
-  max-width: 660px;
+  max-width: 1120px;
+  margin-top: 24px;
 }
 
 .apps-intro-copy p {
@@ -1915,9 +1913,12 @@ div.plain-note {
 
   .map-intro,
   .directory-heading,
-  .apps-intro,
   .starter-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .apps-intro-copy {
+    max-width: 760px;
   }
 
   .starter-level-heading {
