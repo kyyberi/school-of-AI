@@ -18,7 +18,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/logo-en.webp" as="image">
     <link rel="preload" href="assets/starter-apps/english-word-buddy.webp" as="image">
-    <link rel="stylesheet" href="css/styles.css?v=20260906-12">
+    <link rel="stylesheet" href="css/styles.css?v=20260906-13">
   </head>
   <body>
     <header class="site-header">
@@ -49,91 +49,122 @@
       </nav>
     </header>
 
-    <main id="top" class="apps-shell">
-      <section class="apps-intro" aria-labelledby="apps-title">
-        <div>
-          <p class="story-label">Starter app gallery</p>
-          <h1 id="apps-title">What kids can build</h1>
-        </div>
-        <div class="apps-intro-copy">
-          <p>Teams do not start from a blank screen. They choose a working starter app, understand it, change it, improve it and make it their own.</p>
-          <p>The Sunday goal is simple: show something real that the team built together.</p>
-        </div>
-      </section>
+    <main id="top" class="apps-shell" data-gallery-lang="en">
+      <div class="starter-browser">
+        <aside class="starter-filter-rail" aria-label="Filter starter apps">
+          <fieldset>
+            <legend>Difficulty</legend>
+            <label><input type="radio" name="difficulty" value="all" checked> All</label>
+            <label><input type="radio" name="difficulty" value="beginner"> Beginner</label>
+            <label><input type="radio" name="difficulty" value="medium"> Medium</label>
+          </fieldset>
+          <fieldset>
+            <legend>Type</legend>
+            <label><input type="checkbox" name="type" value="ai"> AI</label>
+            <label><input type="checkbox" name="type" value="english"> English</label>
+            <label><input type="checkbox" name="type" value="maps"> Maps</label>
+            <label><input type="checkbox" name="type" value="games"> Games</label>
+            <label><input type="checkbox" name="type" value="web"> Web</label>
+            <label><input type="checkbox" name="type" value="planning"> Planning</label>
+            <label><input type="checkbox" name="type" value="camera"> Camera</label>
+            <label><input type="checkbox" name="type" value="voice"> Voice</label>
+          </fieldset>
+          <fieldset>
+            <legend>Skills</legend>
+            <label><input type="checkbox" name="skill" value="html-css"> HTML/CSS</label>
+            <label><input type="checkbox" name="skill" value="javascript"> JavaScript</label>
+            <label><input type="checkbox" name="skill" value="apis"> APIs</label>
+            <label><input type="checkbox" name="skill" value="maps"> Maps</label>
+            <label><input type="checkbox" name="skill" value="speech"> Speech</label>
+            <label><input type="checkbox" name="skill" value="game-logic"> Game logic</label>
+          </fieldset>
+        </aside>
 
-      <section class="starter-gallery" aria-labelledby="beginner-title">
-        <div class="starter-level-intro">
-          <h2 id="beginner-title">Beginner</h2>
-          <p>Start with something that works. Make your first visible changes quickly.</p>
-          <p>Change content, appearance and simple behaviour. Then make the starter your own.</p>
-        </div>
-        <div class="starter-showcase">
-          <article class="starter-app starter-featured">
-            <h3>English Word Buddy</h3>
-            <img src="assets/starter-apps/english-word-buddy.webp" alt="English Word Buddy starter app preview">
-            <p>A bilingual vocabulary starter that teams can turn into their own quiz, glossary or language game.</p>
-          </article>
-          <div class="starter-supporting">
-          <article class="starter-app">
-            <h3>My World Map</h3>
-            <img src="assets/starter-apps/my-world-map.webp" alt="My World Map starter app preview">
-            <p>Add places, photos and stories to create an interactive map around any topic.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Story Builder</h3>
-            <img src="assets/starter-apps/story-builder.webp" alt="Story Builder starter app preview">
-            <p>Choose characters, places and themes, then reshape the starter into your own storytelling app.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Mini Website Builder</h3>
-            <img src="assets/starter-apps/mini-website-builder.webp" alt="Mini Website Builder starter app preview">
-            <p>Turn a ready-made site into a page for a hobby, idea, club, project or small business.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Mood and Activity Picker</h3>
-            <img src="assets/starter-apps/mood-activity-picker.webp" alt="Mood and Activity Picker starter app preview">
-            <p>Change the choices and recommendation logic to create your own personalised suggestion app.</p>
-          </article>
+        <section class="starter-catalogue" aria-labelledby="apps-title">
+          <div class="starter-catalogue-head">
+            <div>
+              <p class="catalogue-kicker">Build. Explore. Make it yours.</p>
+              <h1 id="apps-title">Starter apps</h1>
+              <p>Start with something that works. Then change it, improve it and make it yours.</p>
+            </div>
+            <p id="starter-count" class="starter-count">10 starter apps</p>
           </div>
-        </div>
-      </section>
 
-      <section class="starter-gallery starter-gallery-alt" aria-labelledby="medium-title">
-        <div class="starter-level-intro">
-          <h2 id="medium-title">Medium</h2>
-          <p>Add more logic, interaction and real app behaviour.</p>
-          <p>Work with data, browser features, maps, speech, scoring and saved state.</p>
-        </div>
-        <div class="starter-showcase">
-          <article class="starter-app starter-featured">
-            <h3>English Speaking Challenge</h3>
-            <img src="assets/starter-apps/english-speaking-challenge.webp" alt="English Speaking Challenge starter app preview">
-            <p>A browser speaking game where learners say English phrases and receive simple recognition feedback and scoring.</p>
-          </article>
-          <div class="starter-supporting">
-          <article class="starter-app">
-            <h3>Treasure Hunt Map</h3>
-            <img src="assets/starter-apps/treasure-hunt-map.webp" alt="Treasure Hunt Map starter app preview">
-            <p>A map game where players read clues, click the correct place and earn points based on accuracy.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Smart Study Planner</h3>
-            <img src="assets/starter-apps/smart-study-planner.webp" alt="Smart Study Planner starter app preview">
-            <p>A homework and study tracker with tasks, due dates, priorities and saved progress in the browser.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Quiz Battle</h3>
-            <img src="assets/starter-apps/quiz-battle.webp" alt="Quiz Battle starter app preview">
-            <p>A multiple-choice quiz app with score tracking, progress and a final result screen that teams can retheme.</p>
-          </article>
-          <article class="starter-app">
-            <h3>Camera Vocabulary Helper</h3>
-            <img src="assets/starter-apps/camera-vocabulary-helper.webp" alt="Camera Vocabulary Helper starter app preview">
-            <p>A camera or image-based vocabulary helper that connects objects to English words, Vietnamese meanings and example sentences.</p>
-          </article>
+          <div class="starter-card-grid">
+            <article class="starter-tile" data-difficulty="beginner" data-type="english ai" data-skill="html-css javascript">
+              <img src="assets/starter-apps/english-word-buddy.webp" alt="English Word Buddy starter app preview">
+              <h2>English Word Buddy</h2>
+              <p>A bilingual vocabulary starter that teams can turn into their own quiz, glossary or language game.</p>
+              <ul><li>Beginner</li><li>English</li><li>JavaScript</li></ul>
+              <a href="assets/starter-apps/english-word-buddy.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="beginner" data-type="maps web" data-skill="html-css javascript maps apis">
+              <img src="assets/starter-apps/my-world-map.webp" alt="My World Map starter app preview">
+              <h2>My World Map</h2>
+              <p>Add places, photos and stories to create an interactive map around any topic.</p>
+              <ul><li>Beginner</li><li>Maps</li><li>APIs</li></ul>
+              <a href="assets/starter-apps/my-world-map.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="beginner" data-type="english games ai" data-skill="html-css javascript game-logic">
+              <img src="assets/starter-apps/story-builder.webp" alt="Story Builder starter app preview">
+              <h2>Story Builder</h2>
+              <p>Choose characters, places and themes, then reshape the starter into your own storytelling app.</p>
+              <ul><li>Beginner</li><li>English</li><li>Game logic</li></ul>
+              <a href="assets/starter-apps/story-builder.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="beginner" data-type="web" data-skill="html-css javascript">
+              <img src="assets/starter-apps/mini-website-builder.webp" alt="Mini Website Builder starter app preview">
+              <h2>Mini Website Builder</h2>
+              <p>Turn a ready-made site into a page for a hobby, idea, club, project or small business.</p>
+              <ul><li>Beginner</li><li>Web</li><li>HTML/CSS</li></ul>
+              <a href="assets/starter-apps/mini-website-builder.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="beginner" data-type="ai web" data-skill="html-css javascript">
+              <img src="assets/starter-apps/mood-activity-picker.webp" alt="Mood and Activity Picker starter app preview">
+              <h2>Mood and Activity Picker</h2>
+              <p>Change the choices and recommendation logic to create your own personalised suggestion app.</p>
+              <ul><li>Beginner</li><li>AI</li><li>Web</li></ul>
+              <a href="assets/starter-apps/mood-activity-picker.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="medium" data-type="english voice ai" data-skill="html-css javascript apis speech">
+              <img src="assets/starter-apps/english-speaking-challenge.webp" alt="English Speaking Challenge starter app preview">
+              <h2>English Speaking Challenge</h2>
+              <p>A browser speaking game where learners say English phrases and receive recognition feedback.</p>
+              <ul><li>Medium</li><li>English</li><li>Speech</li></ul>
+              <a href="assets/starter-apps/english-speaking-challenge.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="medium" data-type="maps games" data-skill="html-css javascript maps apis game-logic">
+              <img src="assets/starter-apps/treasure-hunt-map.webp" alt="Treasure Hunt Map starter app preview">
+              <h2>Treasure Hunt Map</h2>
+              <p>A map game where players read clues, click the correct place and earn points based on accuracy.</p>
+              <ul><li>Medium</li><li>Maps</li><li>Game logic</li></ul>
+              <a href="assets/starter-apps/treasure-hunt-map.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="medium" data-type="planning web" data-skill="html-css javascript">
+              <img src="assets/starter-apps/smart-study-planner.webp" alt="Smart Study Planner starter app preview">
+              <h2>Smart Study Planner</h2>
+              <p>A homework and study tracker with tasks, due dates, priorities and saved progress.</p>
+              <ul><li>Medium</li><li>Planning</li><li>Web</li></ul>
+              <a href="assets/starter-apps/smart-study-planner.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="medium" data-type="games english" data-skill="html-css javascript game-logic">
+              <img src="assets/starter-apps/quiz-battle.webp" alt="Quiz Battle starter app preview">
+              <h2>Quiz Battle</h2>
+              <p>A multiple-choice quiz app with score tracking, progress and a final result screen.</p>
+              <ul><li>Medium</li><li>Games</li><li>JavaScript</li></ul>
+              <a href="assets/starter-apps/quiz-battle.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="starter-tile" data-difficulty="medium" data-type="camera english ai" data-skill="html-css javascript apis">
+              <img src="assets/starter-apps/camera-vocabulary-helper.webp" alt="Camera Vocabulary Helper starter app preview">
+              <h2>Camera Vocabulary Helper</h2>
+              <p>Connect objects to English words, Vietnamese meanings and example sentences.</p>
+              <ul><li>Medium</li><li>Camera</li><li>AI</li></ul>
+              <a href="assets/starter-apps/camera-vocabulary-helper.webp">View example <span aria-hidden="true">→</span></a>
+            </article>
           </div>
-        </div>
-      </section>
+          <p class="starter-empty" hidden>No starter apps match those filters.</p>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -147,5 +178,6 @@
         <p>The activities are informal and practical. They are intended to complement, not replace, formal education.</p>
       </div>
     </footer>
+    <script src="js/starter-gallery.js?v=20260906-13"></script>
   </body>
 </html>
