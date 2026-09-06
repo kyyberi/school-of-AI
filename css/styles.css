@@ -1197,8 +1197,11 @@ div.plain-note {
   font-weight: 800;
 }
 
-.map-frame {
-  position: relative;
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.74fr) minmax(300px, 0.26fr);
+  gap: 24px;
+  align-items: stretch;
 }
 
 .locations-map {
@@ -1337,28 +1340,71 @@ div.plain-note {
   border-color: var(--green);
 }
 
-.map-legend-panel {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 720;
-  width: min(310px, calc(100% - 32px));
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.93);
-  box-shadow: 0 12px 34px rgba(7, 27, 61, 0.16);
+.map-detail-panel {
+  display: grid;
+  align-content: start;
+  min-height: min(76vh, 800px);
+  padding: 22px 0 0 2px;
+  color: var(--blue-ink);
 }
 
-.map-legend-panel p {
+.map-panel-guide p,
+.map-detail-panel .map-clarification {
   margin: 0;
   color: var(--blue-ink);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.35;
 }
 
-.map-legend-panel .map-clarification {
-  margin-top: 10px;
+.map-detail-panel .map-clarification {
+  margin-top: 14px;
   color: rgba(7, 27, 61, 0.68);
   font-size: 0.82rem;
+}
+
+.map-location-details {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.map-location-details h2 {
+  margin: 4px 0 0;
+  color: var(--blue-dark);
+  font-size: clamp(1.8rem, 2.4vw, 2.45rem);
+  line-height: 1.05;
+}
+
+.map-location-details p {
+  margin-top: 14px;
+  color: var(--blue-ink);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.map-location-details .detail-type {
+  margin: 0;
+  color: var(--green);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.map-location-details .detail-meta {
+  color: rgba(7, 27, 61, 0.72);
+  font-size: 0.9rem;
+}
+
+.map-location-details .detail-source {
+  font-size: 0.86rem;
+}
+
+.map-location-details .detail-source a {
+  color: rgba(7, 27, 61, 0.72);
+  font-weight: 760;
+}
+
+.map-location-details .button {
+  margin-top: 18px;
 }
 
 .school-cluster {
@@ -1749,6 +1795,20 @@ div.plain-note {
     font-size: clamp(3rem, 7vw, 4.1rem);
   }
 
+  .map-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .map-detail-panel {
+    min-height: 0;
+    padding-top: 0;
+  }
+
+  .map-location-details {
+    margin-top: 22px;
+  }
+
   .directory-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2086,20 +2146,12 @@ div.plain-note {
     height: 68vh;
   }
 
-  .map-legend-panel {
-    top: auto;
-    right: 10px;
-    bottom: 22px;
-    width: calc(100% - 20px);
-    padding: 12px;
-  }
-
-  .map-legend-panel p,
+  .map-panel-guide p,
   .map-legend li {
     font-size: 0.82rem;
   }
 
-  .map-legend-panel .map-clarification {
+  .map-detail-panel .map-clarification {
     font-size: 0.76rem;
   }
 }

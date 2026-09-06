@@ -19,6 +19,8 @@
       otherCities: "Other cities to explore",
       partnerReason: "Useful because there is already a local English-school partner with access to students, parents, teachers, and possible space.",
       cityReason: "A possible community location for future School4AI activity.",
+      noSelectionTitle: "Select a location",
+      noSelectionText: "Click a city or partner marker on the map to see why that place could matter for School4AI.",
       viewDetails: "View details",
       noResults: "No matching locations found. Try another city or search term.",
       resultSingular: "1 possible location",
@@ -45,6 +47,8 @@
       otherCities: "Các thành phố khác để tìm hiểu",
       partnerReason: "Hữu ích vì đã có đầu mối trung tâm tiếng Anh địa phương với khả năng tiếp cận học sinh, phụ huynh, giáo viên và địa điểm.",
       cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
+      noSelectionTitle: "Chọn một địa điểm",
+      noSelectionText: "Bấm vào một thành phố hoặc điểm đối tác trên bản đồ để xem vì sao nơi đó có thể phù hợp với School4AI.",
       viewDetails: "Xem chi tiết",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
       resultSingular: "1 địa điểm tiềm năng",
@@ -389,6 +393,7 @@
   const resultCount = document.getElementById("location-result-count");
   const directoryList = document.getElementById("location-directory-list");
   const directoryFilters = document.querySelector(".directory-filters");
+  const mapLocationDetails = document.getElementById("map-location-details");
   const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hạ Long", "Nha Trang", "Thái Nguyên"]);
 
   if (!mapElement || !window.L) {
@@ -573,12 +578,36 @@
     }
   }
 
+  function renderLocationDetail(location) {
+    if (!mapLocationDetails) {
+      return;
+    }
+    const isPartner = location && location.kind === "partner";
+    const title = location ? location.city : content.noSelectionTitle;
+    const partnerName = isPartner ? `<p><strong>${escapeHtml(location.name)}</strong></p>` : "";
+    const source = isPartner ? `<p class="detail-source">${content.source} · <a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : "";
+    const locality = location && isPartner ? location.address : location ? location.city : "";
+    const reason = location ? isPartner ? content.partnerReason : location.city === "Yên Bái" ? content.startingPoint : content.cityReason : content.noSelectionText;
+    const type = location ? isPartner ? content.partnerCard : content.invitationCity : content.invitation;
+    const ctaCity = location ? location.city : lang === "vi" ? "khu vuc cua toi" : "my area";
+    const href = `https://wa.me/971509718065?text=${encodeURIComponent(content.whatsapp.replace("{city}", ctaCity))}`;
+    mapLocationDetails.innerHTML = `
+      <p class="detail-type">${type}</p>
+      <h2>${escapeHtml(title)}</h2>
+      ${partnerName}
+      <p>${escapeHtml(reason)}</p>
+      ${locality ? `<p class="detail-meta">${escapeHtml(locality)}</p>` : ""}
+      ${source}
+      <a class="button primary whatsapp-link" href="${href}">${content.cta}</a>
+    `;
+  }
+
   locations.forEach((location) => {
     const marker = L.marker([location.lat, location.lng], {
       icon: markerIcon,
       title: location.city
     });
-    marker.on("click", () => openLocation(location));
+    marker.on("click", () => renderLocationDetail(location));
     clusterGroup.addLayer(marker);
   });
 
@@ -587,7 +616,7 @@
       icon: partnerIcon,
       title: location.name
     });
-    marker.on("click", () => openLocation({ ...location, kind: "partner" }));
+    marker.on("click", () => renderLocationDetail({ ...location, kind: "partner" }));
     clusterGroup.addLayer(marker);
   });
 
@@ -704,6 +733,7 @@
 
   populateCityFilter();
   renderDirectory();
+  renderLocationDetail(null);
   if (searchInput) {
     searchInput.addEventListener("input", renderDirectory);
   }
