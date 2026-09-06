@@ -382,6 +382,14 @@ p {
   max-width: 680px;
 }
 
+.value-section .story-heading {
+  max-width: 820px;
+}
+
+#young-title {
+  white-space: nowrap;
+}
+
 .story-heading p {
   max-width: 620px;
   color: var(--blue-ink);
@@ -2088,6 +2096,10 @@ div.plain-note {
   .map-intro,
   .directory-heading {
     grid-template-columns: 1fr;
+  }
+
+  #young-title {
+    white-space: normal;
   }
 
   .map-note {
