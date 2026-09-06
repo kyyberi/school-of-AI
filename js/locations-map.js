@@ -19,13 +19,19 @@
       otherCities: "Other cities to explore",
       partnerReason: "Useful because there is already a local English-school partner with access to students, parents, teachers, and possible space.",
       cityReason: "A possible community location for future School4AI activity.",
+      localLeadReason: "A useful local lead for students, parents, teachers, and possible space.",
       noSelectionTitle: "Select a location",
       noSelectionText: "Click a city or partner marker on the map to see why that place could matter for School4AI.",
       nextStep: "What happens next",
       viewDetails: "View details",
+      viewLocation: "View location",
       noResults: "No matching locations found. Try another city or search term.",
       resultSingular: "1 possible location",
       resultPlural: "{count} possible locations",
+      photoSource: "Photo source",
+      statusStrong: "Strong lead",
+      statusExploring: "Exploring",
+      statusOpen: "Open invitation",
       cta: "Contact coordinator",
       close: "Close",
       whatsapp: "Hello Jarkko. I want to help start School4AI in {city}."
@@ -48,13 +54,19 @@
       otherCities: "Các thành phố khác để tìm hiểu",
       partnerReason: "Hữu ích vì đã có đầu mối trung tâm tiếng Anh địa phương với khả năng tiếp cận học sinh, phụ huynh, giáo viên và địa điểm.",
       cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
+      localLeadReason: "Một đầu mối địa phương hữu ích cho học sinh, phụ huynh, giáo viên và địa điểm có thể sử dụng.",
       noSelectionTitle: "Chọn một địa điểm",
       noSelectionText: "Bấm vào một thành phố hoặc điểm đối tác trên bản đồ để xem vì sao nơi đó có thể phù hợp với School4AI.",
       nextStep: "Bước tiếp theo",
       viewDetails: "Xem chi tiết",
+      viewLocation: "Xem địa điểm",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
       resultSingular: "1 địa điểm tiềm năng",
       resultPlural: "{count} địa điểm tiềm năng",
+      photoSource: "Nguồn ảnh",
+      statusStrong: "Đầu mối mạnh",
+      statusExploring: "Đang tìm hiểu",
+      statusOpen: "Lời mời mở",
       cta: "Liên hệ người điều phối",
       close: "Đóng",
       whatsapp: "Xin chao Jarkko. Toi muon ho tro bat dau School4AI tai {city}."
@@ -391,12 +403,45 @@
   const dialog = document.getElementById("location-dialog");
   const dialogContent = document.getElementById("location-dialog-content");
   const searchInput = document.getElementById("location-search");
-  const cityFilter = document.getElementById("location-city-filter");
   const resultCount = document.getElementById("location-result-count");
   const directoryList = document.getElementById("location-directory-list");
   const directoryFilters = document.querySelector(".directory-filters");
   const mapLocationDetails = document.getElementById("map-location-details");
   const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hạ Long", "Nha Trang", "Thái Nguyên"]);
+  const cityImages = {
+    "Bà Rịa": "ba-ria-vung-tau",
+    "Vũng Tàu": "ba-ria-vung-tau",
+    "Bắc Ninh": "bac-ninh",
+    "Từ Sơn": "bac-ninh",
+    "Bến Tre": "ben-tre",
+    "Biên Hòa": "bien-hoa",
+    "Buôn Ma Thuột": "buon-ma-thuot",
+    "Nam Định": "nam-dinh",
+    "Yên Bái": "yen-bai",
+    "Đà Nẵng": "da-nang",
+    "Nha Trang": "nha-trang",
+    "Cần Thơ": "can-tho",
+    "TP. Hồ Chí Minh": "hcmc",
+    "TP. Thủ Đức": "hcmc"
+  };
+  const locationPhotoSources = {
+    "ba-ria-vung-tau": "https://commons.wikimedia.org/wiki/File:V%C5%A9ng_T%C3%A0u,_Ba_Ria_-_Vung_Tau,_Vietnam_-_panoramio_(2).jpg",
+    "bac-ninh": "https://commons.wikimedia.org/wiki/File:But_Thap_Temple_-_20.jpg",
+    "ben-tre": "https://commons.wikimedia.org/wiki/File:20190924_Ben_Tre_Bridge-1.jpg",
+    "bien-hoa": "https://commons.wikimedia.org/wiki/File:B%E1%BB%ADu_Long,_Bien_Hoa,_Dong_Nai,_Vietnam_-_panoramio_(23).jpg",
+    "buon-ma-thuot": "https://commons.wikimedia.org/wiki/File:Bu%C3%B4n_Ma_Thu%E1%BB%99t_banner_%C4%90ray_Nur_waterfall.jpg",
+    "nam-dinh": "https://commons.wikimedia.org/wiki/File:C%E1%BB%95ng_ch%C3%A0o_Nam_%C4%90%E1%BB%8Bnh_(Nam_Dinh_City_Gate,_Vietnam).jpg",
+    "yen-bai": "https://commons.wikimedia.org/wiki/File:Mu_Cang_Chai_Town_-_Yen_Bai_-_Vietnam.jpg",
+    "da-nang": "https://commons.wikimedia.org/wiki/File:Dragon_Bridge_Da_Nang_7.jpg",
+    "nha-trang": "https://commons.wikimedia.org/wiki/File:Nha_Trang_Beach_3.jpg",
+    "can-tho": "https://commons.wikimedia.org/wiki/File:Can_Tho,_Vietnam,_Floating_Market.jpg",
+    "hcmc": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City,_Notre-Dame_Basilica,_2020-01_CN-01.jpg"
+  };
+  const regionalFallbacks = {
+    north: "yen-bai",
+    central: "da-nang",
+    south: "can-tho"
+  };
 
   if (!mapElement || !window.L) {
     return;
@@ -468,6 +513,49 @@
       .toLocaleLowerCase("vi")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getLocationRegion(location) {
+    if (location.lat >= 18.2) {
+      return "north";
+    }
+    if (location.lat >= 12.1) {
+      return "central";
+    }
+    return "south";
+  }
+
+  function getSelectedRadio(name) {
+    const checked = directoryFilters ? directoryFilters.querySelector(`input[name="${name}"]:checked`) : null;
+    return checked ? checked.value : "";
+  }
+
+  function getStatusLabel(status) {
+    if (status === "strong") {
+      return content.statusStrong;
+    }
+    if (status === "exploring") {
+      return content.statusExploring;
+    }
+    return content.statusOpen;
+  }
+
+  function enrichDirectoryLocation(location) {
+    const region = getLocationRegion(location);
+    const imageKey = cityImages[location.city] || regionalFallbacks[region];
+    const isPartner = location.kind === "partner";
+    const statusValue = location.priority ? "strong" : isPartner ? "exploring" : "open";
+    const photoSourceUrl = locationPhotoSources[imageKey];
+    return {
+      ...location,
+      region,
+      statusValue,
+      statusLabel: getStatusLabel(statusValue),
+      image: `assets/location-photos/${imageKey}.webp`,
+      imageAlt: `${location.city}, Vietnam`,
+      photoSourceUrl,
+      reason: isPartner && location.priority ? content.localLeadReason : location.reason
+    };
   }
 
   function getVietnamBoundary() {
@@ -642,7 +730,7 @@
       priority: priorityCities.has(location.city),
       reason: content.partnerReason
     }))
-  ].sort((a, b) => {
+  ].map(enrichDirectoryLocation).sort((a, b) => {
     if (a.priority !== b.priority) {
       return a.priority ? -1 : 1;
     }
@@ -652,52 +740,46 @@
     return a.city.localeCompare(b.city, "vi") || a.name.localeCompare(b.name, "vi");
   });
 
-  function populateCityFilter() {
-    if (!cityFilter) {
-      return;
-    }
-    const cities = [...new Set(directoryLocations.map((location) => location.city))].sort((a, b) => a.localeCompare(b, "vi"));
-    cities.forEach((city) => {
-      const option = document.createElement("option");
-      option.value = city;
-      option.textContent = city;
-      cityFilter.append(option);
-    });
-  }
-
   function getFilteredLocations() {
     const term = normalize(searchInput ? searchInput.value : "");
-    const city = cityFilter ? cityFilter.value : "";
+    const type = getSelectedRadio("location-type");
+    const region = getSelectedRadio("location-region");
+    const statusValue = getSelectedRadio("location-status");
     return directoryLocations.filter((location) => {
       const haystack = normalize([location.name, location.city, location.address, location.reason].filter(Boolean).join(" "));
       const matchesSearch = !term || haystack.includes(term);
-      const matchesCity = !city || location.city === city;
-      return matchesSearch && matchesCity;
+      const matchesType = !type || location.kind === type;
+      const matchesRegion = !region || location.region === region;
+      const matchesStatus = !statusValue || location.statusValue === statusValue;
+      return matchesSearch && matchesType && matchesRegion && matchesStatus;
     });
   }
 
-  function renderDirectoryGroup(title, items, startIndex) {
+  function renderDirectoryGroup(title, items) {
     if (!items.length) {
       return "";
     }
     const entries = items.map((location, index) => {
       const isPartner = location.kind === "partner";
       const sourceLink = isPartner ? `<a href="${escapeHtml(location.sourceUrl)}">${content.source}</a>` : "";
+      const photoSource = location.photoSourceUrl ? `<a href="${escapeHtml(location.photoSourceUrl)}">${content.photoSource}</a>` : "";
       const locality = isPartner ? location.address : location.city;
       const partnerName = isPartner ? `<p class="directory-partner">${escapeHtml(location.name)}</p>` : "";
-      const priority = location.priority ? `<p class="directory-priority">${content.priorityCandidate}</p>` : "";
-      const actionIndex = startIndex + index;
+      const sourceItems = [sourceLink, photoSource].filter(Boolean).join("");
       return `
         <article class="directory-item ${isPartner ? "partner-item" : "city-item"} ${location.priority ? "priority-item" : ""}">
-          ${priority}
-          <h3>${escapeHtml(location.city)}</h3>
-          <p class="directory-type">${isPartner ? content.partnerCard : content.invitationCity}</p>
-          ${partnerName}
-          <p class="directory-reason">${escapeHtml(location.reason)}</p>
-          <p class="directory-locality">${escapeHtml(locality)}</p>
-          <div class="directory-actions">
-            ${sourceLink}
-            <button type="button" data-directory-index="${actionIndex}">${content.viewDetails}</button>
+          <img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.imageAlt)}" loading="lazy">
+          <div class="directory-item-copy">
+            <p class="directory-priority">${escapeHtml(location.statusLabel)}</p>
+            <h3>${escapeHtml(location.city)}</h3>
+            ${partnerName}
+            <p class="directory-type">${isPartner ? content.partnerCard : content.invitationCity}</p>
+            <p class="directory-reason">${escapeHtml(location.reason)}</p>
+            <p class="directory-locality">${escapeHtml(locality)}</p>
+            <div class="directory-actions">
+              ${sourceItems}
+              <button type="button" data-directory-index="${index}">${content.viewLocation}</button>
+            </div>
           </div>
         </article>
       `;
@@ -720,16 +802,25 @@
       directoryList.innerHTML = `<p class="directory-empty">${content.noResults}</p>`;
       return;
     }
-    const strongLeads = filtered.filter((location) => location.kind === "partner");
-    const otherCities = filtered.filter((location) => location.kind !== "partner");
+    const strongLeads = filtered.filter((location) => location.statusValue === "strong");
+    const otherCities = filtered.filter((location) => location.statusValue !== "strong");
     directoryList.innerHTML = [
-      renderDirectoryGroup(content.strongLeads, strongLeads, 0),
-      renderDirectoryGroup(content.otherCities, otherCities, strongLeads.length)
+      renderDirectoryGroup(content.strongLeads, strongLeads),
+      renderDirectoryGroup(content.otherCities, otherCities)
     ].join("");
     directoryList.querySelectorAll("[data-directory-index]").forEach((button) => {
       button.addEventListener("click", () => {
-        const location = filtered[Number(button.dataset.directoryIndex)];
-        openLocation(location);
+        const card = button.closest(".directory-item");
+        const group = button.closest(".directory-group");
+        const items = group && group.querySelector("h3").textContent === content.strongLeads ? strongLeads : otherCities;
+        const location = items[Number(button.dataset.directoryIndex)];
+        renderLocationDetail(location);
+        map.flyTo([location.lat, location.lng], Math.max(map.getZoom(), 8), { duration: 0.7 });
+        document.querySelector(".map-workspace").scrollIntoView({ behavior: "smooth", block: "start" });
+        if (card) {
+          card.classList.add("is-selected");
+          setTimeout(() => card.classList.remove("is-selected"), 900);
+        }
       });
     });
   }
@@ -740,17 +831,14 @@
     map.fitBounds(clusterGroup.getBounds().pad(0.18));
   }
 
-  populateCityFilter();
   renderDirectory();
   renderLocationDetail(null);
   if (searchInput) {
     searchInput.addEventListener("input", renderDirectory);
   }
-  if (cityFilter) {
-    cityFilter.addEventListener("change", renderDirectory);
-  }
   if (directoryFilters) {
     directoryFilters.addEventListener("submit", (event) => event.preventDefault());
+    directoryFilters.addEventListener("change", renderDirectory);
   }
 
   dialog.addEventListener("click", (event) => {
