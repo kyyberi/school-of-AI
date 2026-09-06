@@ -1589,13 +1589,6 @@ div.plain-note {
   outline: 3px solid rgba(243, 183, 25, 0.34);
 }
 
-.directory-count {
-  margin: 0 0 12px;
-  color: var(--green);
-  font-size: 0.82rem;
-  font-weight: 850;
-}
-
 .directory-grid {
   display: grid;
   gap: clamp(22px, 3.2vw, 38px);

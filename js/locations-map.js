@@ -24,8 +24,6 @@
       viewDetails: "View details",
       viewLocation: "View location",
       noResults: "No matching locations found. Try another city or search term.",
-      resultSingular: "1 possible location",
-      resultPlural: "{count} possible locations",
       photoSource: "Photo source",
       statusStrong: "Strong lead",
       statusExploring: "Exploring",
@@ -57,8 +55,6 @@
       viewDetails: "Xem chi tiết",
       viewLocation: "Xem địa điểm",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
-      resultSingular: "1 địa điểm tiềm năng",
-      resultPlural: "{count} địa điểm tiềm năng",
       photoSource: "Nguồn ảnh",
       statusStrong: "Đầu mối mạnh",
       statusExploring: "Đang tìm hiểu",
@@ -479,7 +475,6 @@
   const dialog = document.getElementById("location-dialog");
   const dialogContent = document.getElementById("location-dialog-content");
   const searchInput = document.getElementById("location-search");
-  const resultCount = document.getElementById("location-result-count");
   const directoryList = document.getElementById("location-directory-list");
   const directoryFilters = document.querySelector(".directory-filters");
   const mapLocationDetails = document.getElementById("map-location-details");
@@ -874,11 +869,10 @@
   }
 
   function renderDirectory() {
-    if (!directoryList || !resultCount) {
+    if (!directoryList) {
       return;
     }
     const filtered = getFilteredLocations();
-    resultCount.textContent = filtered.length === 1 ? content.resultSingular : content.resultPlural.replace("{count}", filtered.length);
     if (!filtered.length) {
       directoryList.innerHTML = `<p class="directory-empty">${content.noResults}</p>`;
       return;
