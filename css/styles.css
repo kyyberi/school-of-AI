@@ -1323,6 +1323,25 @@ div.plain-note {
   border-radius: 50%;
 }
 
+.selected-marker {
+  z-index: 1200 !important;
+}
+
+.selected-marker span {
+  width: 38px;
+  height: 38px;
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 6px rgba(243, 183, 25, 0.28),
+    0 14px 26px rgba(7, 27, 61, 0.36);
+}
+
+.selected-marker span::after {
+  inset: 9px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 5px var(--gold);
+}
+
 .partner-marker span {
   background: var(--gold);
 }

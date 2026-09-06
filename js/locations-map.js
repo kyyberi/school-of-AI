@@ -572,6 +572,23 @@
     iconAnchor: [17, 42]
   });
 
+  const selectedMarkerIcon = L.divIcon({
+    className: "school-marker selected-marker",
+    html: '<span aria-hidden="true"></span>',
+    iconSize: [42, 52],
+    iconAnchor: [21, 50]
+  });
+
+  const selectedPartnerIcon = L.divIcon({
+    className: "school-marker partner-marker selected-marker",
+    html: '<span aria-hidden="true"></span>',
+    iconSize: [42, 52],
+    iconAnchor: [21, 50]
+  });
+
+  const markerRegistry = new Map();
+  let selectedMarker = null;
+
   function escapeHtml(value) {
     return String(value)
       .replaceAll("&", "&amp;")
@@ -586,6 +603,42 @@
       .toLocaleLowerCase("vi")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getLocationKind(location) {
+    return location && location.kind === "partner" ? "partner" : "invitation";
+  }
+
+  function getLocationKey(location) {
+    if (!location) {
+      return "";
+    }
+    const kind = getLocationKind(location);
+    const name = kind === "partner" ? location.name : location.city;
+    return `${kind}:${name}:${location.city}`;
+  }
+
+  function getDefaultIcon(location) {
+    return getLocationKind(location) === "partner" ? partnerIcon : markerIcon;
+  }
+
+  function getSelectedIcon(location) {
+    return getLocationKind(location) === "partner" ? selectedPartnerIcon : selectedMarkerIcon;
+  }
+
+  function setSelectedMarker(location) {
+    if (selectedMarker) {
+      selectedMarker.setIcon(getDefaultIcon(selectedMarker.school4aiLocation));
+      selectedMarker.setZIndexOffset(0);
+      selectedMarker = null;
+    }
+    const marker = markerRegistry.get(getLocationKey(location));
+    if (!marker) {
+      return;
+    }
+    marker.setIcon(getSelectedIcon(location));
+    marker.setZIndexOffset(1000);
+    selectedMarker = marker;
   }
 
   function getLocationRegion(location) {
@@ -745,6 +798,7 @@
     if (!mapLocationDetails) {
       return;
     }
+    setSelectedMarker(location);
     const isPartner = location && location.kind === "partner";
     const title = location ? location.city : content.noSelectionTitle;
     const partnerName = isPartner ? `<p class="detail-partner">${escapeHtml(location.name)}</p>` : "";
@@ -777,16 +831,21 @@
       icon: markerIcon,
       title: location.city
     });
+    marker.school4aiLocation = location;
+    markerRegistry.set(getLocationKey(location), marker);
     marker.on("click", () => renderLocationDetail(location));
     clusterGroup.addLayer(marker);
   });
 
   partnerLocations.forEach((location) => {
+    const partnerLocation = { ...location, kind: "partner" };
     const marker = L.marker([location.lat, location.lng], {
       icon: partnerIcon,
       title: location.name
     });
-    marker.on("click", () => renderLocationDetail({ ...location, kind: "partner" }));
+    marker.school4aiLocation = partnerLocation;
+    markerRegistry.set(getLocationKey(partnerLocation), marker);
+    marker.on("click", () => renderLocationDetail(partnerLocation));
     clusterGroup.addLayer(marker);
   });
 
