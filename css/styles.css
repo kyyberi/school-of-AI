@@ -1127,13 +1127,6 @@ div.plain-note {
   background: var(--paper);
 }
 
-.map-kicker {
-  margin: 0 0 18px;
-  color: var(--green);
-  font-size: 0.82rem;
-  font-weight: 950;
-}
-
 .map-intro h1 {
   max-width: 1320px;
   color: var(--blue-dark);
