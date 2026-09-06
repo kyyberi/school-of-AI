@@ -396,6 +396,86 @@
       lat: 10.7931,
       lng: 106.7097,
       sourceUrl: "https://www.britishcouncil.vn/en/english-courses/teaching-centre"
+    },
+    {
+      name: "VUS Nguyễn Thị Minh Khai",
+      city: "TP. Hồ Chí Minh",
+      address: "189 Nguyễn Thị Minh Khai, Phạm Ngũ Lão, Quận 1, TP. Hồ Chí Minh",
+      lat: 10.7698,
+      lng: 106.6897,
+      sourceUrl: "https://teachenglish.vus.edu.vn/"
+    },
+    {
+      name: "VUS Võ Thị Sáu Biên Hòa",
+      city: "Biên Hòa",
+      address: "213-215 Võ Thị Sáu, phường Thống Nhất, TP. Biên Hòa, Đồng Nai",
+      lat: 10.9556,
+      lng: 106.8468,
+      sourceUrl: "https://www.linkedin.com/company/vustheenglishcenter"
+    },
+    {
+      name: "VUS Vũng Tàu",
+      city: "Vũng Tàu",
+      address: "498 Trương Công Định, TP. Vũng Tàu",
+      lat: 10.3562,
+      lng: 107.0855,
+      sourceUrl: "https://www.linkedin.com/company/vustheenglishcenter"
+    },
+    {
+      name: "VUS Cầu Giấy",
+      city: "Hà Nội",
+      address: "Tầng 2 & 3, Tòa Nhà CTM, 299 Cầu Giấy, phường Dịch Vọng, Cầu Giấy, Hà Nội",
+      lat: 21.0364,
+      lng: 105.7899,
+      sourceUrl: "https://www.linkedin.com/company/vustheenglishcenter"
+    },
+    {
+      name: "ILA Nguyễn Đình Chiểu",
+      city: "TP. Hồ Chí Minh",
+      address: "146 Nguyễn Đình Chiểu, Quận 3, TP. Hồ Chí Minh",
+      lat: 10.7828,
+      lng: 106.6905,
+      sourceUrl: "https://career.ila.edu.vn/job-description/ila-centre-manager-overseas-study-centre-MDQtMDgtMjAyMy0xNzoxODo0Ng%3D%3D"
+    },
+    {
+      name: "YOLA Trần Não",
+      city: "TP. Thủ Đức",
+      address: "115 Trần Não, khu phố 4, Bình An, TP. Thủ Đức, TP. Hồ Chí Minh",
+      lat: 10.7901,
+      lng: 106.7352,
+      sourceUrl: "https://teacheratyola.talent.vn/"
+    },
+    {
+      name: "YOLA Nguyễn Tri Phương",
+      city: "TP. Hồ Chí Minh",
+      address: "431 Nguyễn Tri Phương, Phường 8, Quận 10, TP. Hồ Chí Minh",
+      lat: 10.7654,
+      lng: 106.6683,
+      sourceUrl: "https://teacheratyola.talent.vn/"
+    },
+    {
+      name: "YOLA Phan Đăng Lưu",
+      city: "TP. Hồ Chí Minh",
+      address: "128B Phan Đăng Lưu, Phú Nhuận, TP. Hồ Chí Minh",
+      lat: 10.8008,
+      lng: 106.6824,
+      sourceUrl: "https://news.tuoitre.vn/yola-expands-with-new-phan-dang-luu-center-reinforcing-commitment-to-empowering-vietnamese-young-talent-103250609102805132.htm"
+    },
+    {
+      name: "RES Nguyễn Thượng Hiền",
+      city: "Hà Nội",
+      address: "17 Nguyễn Thượng Hiền, phường Cửa Nam, Hà Nội",
+      lat: 21.0189,
+      lng: 105.8432,
+      sourceUrl: "https://res.edu.vn/chi-nhanh/"
+    },
+    {
+      name: "RES Quận 7",
+      city: "TP. Hồ Chí Minh",
+      address: "10-12 Nguyễn Thị Thập, phường Tân Hưng, Quận 7, TP. Hồ Chí Minh",
+      lat: 10.7406,
+      lng: 106.7041,
+      sourceUrl: "https://res.edu.vn/trung-tam-luyen-thi-ielts-tot-nhat-quan-7/"
     }
   ];
 
