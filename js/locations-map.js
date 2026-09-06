@@ -12,8 +12,13 @@
       possiblePartner: "English language schools are useful local partner leads for space, students, parents, and teachers.",
       address: "Address",
       source: "Source",
-      invitationCity: "School4AI invitation city",
-      partnerCard: "Possible English school partner",
+      invitationCity: "Possible School4AI city",
+      partnerCard: "English school partner",
+      priorityCandidate: "Priority candidate",
+      strongLeads: "Strong partner leads",
+      otherCities: "Other cities to explore",
+      partnerReason: "Useful because there is already a local English-school partner with access to students, parents, teachers, and possible space.",
+      cityReason: "A possible community location for future School4AI activity.",
       viewDetails: "View details",
       noResults: "No matching locations found. Try another city or search term.",
       resultSingular: "1 possible location",
@@ -33,8 +38,13 @@
       possiblePartner: "Các trung tâm tiếng Anh là đầu mối địa phương phù hợp về địa điểm, học sinh, phụ huynh và giáo viên.",
       address: "Địa chỉ",
       source: "Nguồn",
-      invitationCity: "Thành phố mời bắt đầu School4AI",
-      partnerCard: "Trung tâm tiếng Anh tiềm năng",
+      invitationCity: "Thành phố School4AI tiềm năng",
+      partnerCard: "Đối tác trung tâm tiếng Anh",
+      priorityCandidate: "Ứng viên ưu tiên",
+      strongLeads: "Đầu mối đối tác mạnh",
+      otherCities: "Các thành phố khác để tìm hiểu",
+      partnerReason: "Hữu ích vì đã có đầu mối trung tâm tiếng Anh địa phương với khả năng tiếp cận học sinh, phụ huynh, giáo viên và địa điểm.",
+      cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
       viewDetails: "Xem chi tiết",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
       resultSingular: "1 địa điểm tiềm năng",
@@ -379,6 +389,7 @@
   const resultCount = document.getElementById("location-result-count");
   const directoryList = document.getElementById("location-directory-list");
   const directoryFilters = document.querySelector(".directory-filters");
+  const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hạ Long", "Nha Trang", "Thái Nguyên"]);
 
   if (!mapElement || !window.L) {
     return;
@@ -488,14 +499,23 @@
       ...location,
       kind: "invitation",
       name: location.city,
-      summary: location.city === "Yên Bái" ? content.startingPoint : content.possibleLocation
+      reason: location.city === "Yên Bái" ? content.startingPoint : content.cityReason
     })),
     ...partnerLocations.map((location) => ({
       ...location,
       kind: "partner",
-      summary: content.possiblePartner
+      priority: priorityCities.has(location.city),
+      reason: content.partnerReason
     }))
-  ].sort((a, b) => a.city.localeCompare(b.city, "vi") || a.name.localeCompare(b.name, "vi"));
+  ].sort((a, b) => {
+    if (a.priority !== b.priority) {
+      return a.priority ? -1 : 1;
+    }
+    if (a.kind !== b.kind) {
+      return a.kind === "partner" ? -1 : 1;
+    }
+    return a.city.localeCompare(b.city, "vi") || a.name.localeCompare(b.name, "vi");
+  });
 
   function populateCityFilter() {
     if (!cityFilter) {
@@ -514,11 +534,45 @@
     const term = normalize(searchInput ? searchInput.value : "");
     const city = cityFilter ? cityFilter.value : "";
     return directoryLocations.filter((location) => {
-      const haystack = normalize([location.name, location.city, location.address, location.summary].filter(Boolean).join(" "));
+      const haystack = normalize([location.name, location.city, location.address, location.reason].filter(Boolean).join(" "));
       const matchesSearch = !term || haystack.includes(term);
       const matchesCity = !city || location.city === city;
       return matchesSearch && matchesCity;
     });
+  }
+
+  function renderDirectoryGroup(title, items, startIndex) {
+    if (!items.length) {
+      return "";
+    }
+    const entries = items.map((location, index) => {
+      const isPartner = location.kind === "partner";
+      const sourceLink = isPartner ? `<a href="${escapeHtml(location.sourceUrl)}">${content.source}</a>` : "";
+      const locality = isPartner ? location.address : location.city;
+      const partnerName = isPartner ? `<p class="directory-partner">${escapeHtml(location.name)}</p>` : "";
+      const priority = location.priority ? `<p class="directory-priority">${content.priorityCandidate}</p>` : "";
+      const actionIndex = startIndex + index;
+      return `
+        <article class="directory-item ${isPartner ? "partner-item" : "city-item"} ${location.priority ? "priority-item" : ""}">
+          ${priority}
+          <h3>${escapeHtml(location.city)}</h3>
+          <p class="directory-type">${isPartner ? content.partnerCard : content.invitationCity}</p>
+          ${partnerName}
+          <p class="directory-reason">${escapeHtml(location.reason)}</p>
+          <p class="directory-locality">${escapeHtml(locality)}</p>
+          <div class="directory-actions">
+            ${sourceLink}
+            <button type="button" data-directory-index="${actionIndex}">${content.viewDetails}</button>
+          </div>
+        </article>
+      `;
+    }).join("");
+    return `
+      <section class="directory-group">
+        <h3>${title}</h3>
+        <div class="directory-list">${entries}</div>
+      </section>
+    `;
   }
 
   function renderDirectory() {
@@ -531,24 +585,12 @@
       directoryList.innerHTML = `<p class="directory-empty">${content.noResults}</p>`;
       return;
     }
-    directoryList.innerHTML = filtered.map((location, index) => {
-      const isPartner = location.kind === "partner";
-      const sourceLink = isPartner ? `<a href="${escapeHtml(location.sourceUrl)}">${content.source}</a>` : "";
-      const address = isPartner ? `<p class="directory-address">${escapeHtml(location.address)}</p>` : "";
-      return `
-        <article class="directory-card ${isPartner ? "partner-card" : ""}">
-          <p class="panel-eyebrow">${isPartner ? content.partnerCard : content.invitationCity}</p>
-          <h3>${escapeHtml(location.name)}</h3>
-          <p>${escapeHtml(location.summary)}</p>
-          ${address}
-          <div class="directory-card-footer">
-            <span>${escapeHtml(location.city)}</span>
-            ${sourceLink}
-            <button type="button" data-directory-index="${index}">${content.viewDetails}</button>
-          </div>
-        </article>
-      `;
-    }).join("");
+    const strongLeads = filtered.filter((location) => location.kind === "partner");
+    const otherCities = filtered.filter((location) => location.kind !== "partner");
+    directoryList.innerHTML = [
+      renderDirectoryGroup(content.strongLeads, strongLeads, 0),
+      renderDirectoryGroup(content.otherCities, otherCities, strongLeads.length)
+    ].join("");
     directoryList.querySelectorAll("[data-directory-index]").forEach((button) => {
       button.addEventListener("click", () => {
         const location = filtered[Number(button.dataset.directoryIndex)];
