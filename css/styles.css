@@ -1722,13 +1722,13 @@ div.plain-note {
   align-items: end;
   max-width: 1760px;
   margin-inline: auto;
-  padding: clamp(56px, 7vw, 108px) clamp(20px, 5vw, 80px) clamp(38px, 5vw, 72px);
+  padding: clamp(42px, 5.4vw, 78px) clamp(20px, 5vw, 80px) clamp(30px, 3.8vw, 52px);
   border-bottom: 1px solid var(--line);
 }
 
 .apps-intro h1 {
   max-width: 780px;
-  font-size: clamp(3.2rem, 5.2vw, 5.2rem);
+  font-size: clamp(2.9rem, 4.4vw, 4.45rem);
 }
 
 .apps-intro-copy {
@@ -1750,11 +1750,11 @@ div.plain-note {
 
 .starter-gallery {
   display: grid;
-  grid-template-columns: minmax(240px, 0.24fr) minmax(0, 0.76fr);
-  gap: clamp(28px, 5vw, 76px);
+  grid-template-columns: minmax(190px, 0.18fr) minmax(0, 0.82fr);
+  gap: clamp(24px, 4vw, 56px);
   max-width: 1760px;
   margin-inline: auto;
-  padding: clamp(44px, 5.8vw, 86px) clamp(20px, 5vw, 80px);
+  padding: clamp(34px, 4.2vw, 62px) clamp(20px, 5vw, 80px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -1776,36 +1776,36 @@ div.plain-note {
 }
 
 .starter-level-heading h2 {
-  max-width: 360px;
-  font-size: clamp(1.55rem, 2.6vw, 2.55rem);
+  max-width: 300px;
+  font-size: clamp(1.35rem, 2vw, 2.05rem);
   line-height: 1.06;
 }
 
 .starter-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(34px, 5vw, 78px) clamp(28px, 4vw, 58px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3.2vw, 44px) clamp(24px, 3vw, 42px);
 }
 
 .starter-card {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   align-content: start;
-  padding-top: 22px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
 }
 
 .starter-card h3 {
   margin: 0;
   color: var(--blue-dark);
-  font-size: clamp(1.34rem, 2vw, 2.05rem);
+  font-size: clamp(1.14rem, 1.42vw, 1.52rem);
   line-height: 1.08;
 }
 
 .starter-card img {
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+  height: clamp(190px, 17vw, 270px);
+  object-fit: contain;
   border-radius: 6px;
   background: var(--white);
 }
@@ -1814,8 +1814,8 @@ div.plain-note {
   max-width: 580px;
   margin: 0;
   color: rgba(7, 27, 61, 0.82);
-  font-size: clamp(0.98rem, 1.08vw, 1.08rem);
-  line-height: 1.48;
+  font-size: clamp(0.9rem, 0.96vw, 0.98rem);
+  line-height: 1.42;
 }
 
 @media (max-width: 1060px) {
@@ -2256,20 +2256,24 @@ div.plain-note {
   }
 
   .apps-intro {
-    padding: 36px 16px 30px;
+    padding: 32px 16px 26px;
   }
 
   .apps-intro h1 {
     max-width: 420px;
-    font-size: clamp(2.4rem, 11vw, 3.25rem);
+    font-size: clamp(2.1rem, 9.6vw, 2.85rem);
   }
 
   .starter-gallery {
-    padding: 34px 16px;
+    padding: 28px 16px;
   }
 
   .starter-grid {
-    gap: 34px;
+    gap: 28px;
+  }
+
+  .starter-card img {
+    height: clamp(180px, 58vw, 250px);
   }
 
   .location-directory {
