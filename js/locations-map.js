@@ -836,14 +836,12 @@
     const term = normalize(searchInput ? searchInput.value : "");
     const type = getSelectedRadio("location-type");
     const region = getSelectedRadio("location-region");
-    const statusValue = getSelectedRadio("location-status");
     return directoryLocations.filter((location) => {
       const haystack = normalize([location.name, location.city, location.address, location.reason].filter(Boolean).join(" "));
       const matchesSearch = !term || haystack.includes(term);
       const matchesType = !type || location.kind === type;
       const matchesRegion = !region || location.region === region;
-      const matchesStatus = !statusValue || location.statusValue === statusValue;
-      return matchesSearch && matchesType && matchesRegion && matchesStatus;
+      return matchesSearch && matchesType && matchesRegion;
     });
   }
 
