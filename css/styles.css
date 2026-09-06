@@ -1744,73 +1744,107 @@ div.plain-note {
 }
 
 .starter-gallery {
-  display: grid;
-  grid-template-columns: minmax(190px, 0.18fr) minmax(0, 0.82fr);
-  gap: clamp(24px, 4vw, 56px);
   max-width: 1760px;
   margin-inline: auto;
-  padding: clamp(34px, 4.2vw, 62px) clamp(20px, 5vw, 80px);
-  border-bottom: 1px solid var(--line);
+  padding: clamp(68px, 8vw, 130px) clamp(20px, 5vw, 80px);
 }
 
-.starter-gallery:last-of-type {
-  border-bottom: 0;
+.starter-gallery + .starter-gallery {
+  background: rgba(255, 255, 255, 0.52);
 }
 
-.starter-level-heading {
-  position: sticky;
-  top: 90px;
-  align-self: start;
+.starter-level-intro {
+  max-width: 920px;
+  margin-bottom: clamp(30px, 4vw, 54px);
 }
 
-.starter-level-heading p {
-  margin: 0 0 12px;
-  color: var(--green);
-  font-size: 0.9rem;
+.starter-level-intro h2 {
+  font-size: clamp(2rem, 3.3vw, 3.45rem);
+}
+
+.starter-level-intro p {
+  max-width: 760px;
+  margin-top: 14px;
+  color: var(--blue-ink);
+  font-size: clamp(1rem, 1.18vw, 1.14rem);
+  line-height: 1.45;
+}
+
+.starter-level-intro p:first-of-type {
+  color: var(--blue-dark);
+  font-size: clamp(1.12rem, 1.45vw, 1.34rem);
   font-weight: 900;
+  line-height: 1.28;
 }
 
-.starter-level-heading h2 {
-  max-width: 300px;
-  font-size: clamp(1.35rem, 2vw, 2.05rem);
-  line-height: 1.06;
-}
-
-.starter-grid {
+.starter-showcase {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(24px, 3.2vw, 44px) clamp(24px, 3vw, 42px);
+  grid-template-columns: minmax(330px, 0.43fr) minmax(0, 0.57fr);
+  gap: clamp(34px, 5vw, 82px);
+  align-items: start;
 }
 
-.starter-card {
+.starter-gallery-alt .starter-featured {
+  order: 2;
+}
+
+.starter-gallery-alt .starter-showcase {
+  grid-template-columns: minmax(0, 0.57fr) minmax(330px, 0.43fr);
+}
+
+.starter-gallery-alt .starter-supporting {
+  order: 1;
+}
+
+.starter-supporting {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 54px) clamp(24px, 3.6vw, 46px);
+}
+
+.starter-app {
+  display: grid;
+  gap: 10px;
   align-content: start;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
 }
 
-.starter-card h3 {
+.starter-app h3 {
   margin: 0;
   color: var(--blue-dark);
-  font-size: clamp(1.14rem, 1.42vw, 1.52rem);
+  font-size: clamp(1.08rem, 1.25vw, 1.34rem);
   line-height: 1.08;
 }
 
-.starter-card img {
+.starter-app img {
   width: 100%;
-  height: clamp(190px, 17vw, 270px);
+  aspect-ratio: 1;
   object-fit: contain;
   border-radius: 6px;
   background: var(--white);
 }
 
-.starter-card p {
-  max-width: 580px;
+.starter-app p {
+  max-width: 520px;
   margin: 0;
   color: rgba(7, 27, 61, 0.82);
   font-size: clamp(0.9rem, 0.96vw, 0.98rem);
   line-height: 1.42;
+}
+
+.starter-featured {
+  gap: 14px;
+}
+
+.starter-featured h3 {
+  max-width: 620px;
+  font-size: clamp(1.55rem, 2.4vw, 2.45rem);
+}
+
+.starter-featured p {
+  max-width: 660px;
+  color: var(--blue-ink);
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  line-height: 1.46;
 }
 
 @media (max-width: 1060px) {
@@ -1909,20 +1943,11 @@ div.plain-note {
   }
 
   .map-intro,
-  .directory-heading,
-  .starter-gallery {
+  .directory-heading {
     grid-template-columns: 1fr;
   }
 
   .apps-intro-copy {
-    max-width: 760px;
-  }
-
-  .starter-level-heading {
-    position: static;
-  }
-
-  .starter-level-heading h2 {
     max-width: 760px;
   }
 
@@ -1950,8 +1975,18 @@ div.plain-note {
   }
 
   .directory-list,
-  .starter-grid {
+  .starter-supporting {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .starter-showcase,
+  .starter-gallery-alt .starter-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .starter-gallery-alt .starter-featured,
+  .starter-gallery-alt .starter-supporting {
+    order: initial;
   }
 
   .locations-map {
@@ -2189,7 +2224,7 @@ div.plain-note {
   .support-grid,
   .directory-filters,
   .directory-list,
-  .starter-grid {
+  .starter-supporting {
     grid-template-columns: 1fr;
   }
 
@@ -2263,15 +2298,20 @@ div.plain-note {
   }
 
   .starter-gallery {
-    padding: 28px 16px;
+    padding: 54px 16px;
   }
 
-  .starter-grid {
-    gap: 28px;
+  .starter-showcase,
+  .starter-supporting {
+    gap: 34px;
   }
 
-  .starter-card img {
-    height: clamp(180px, 58vw, 250px);
+  .starter-level-intro {
+    margin-bottom: 30px;
+  }
+
+  .starter-featured h3 {
+    font-size: clamp(1.5rem, 8vw, 2.05rem);
   }
 
   .location-directory {
