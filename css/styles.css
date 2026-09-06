@@ -1506,10 +1506,7 @@ div.plain-note {
 }
 
 .directory-heading {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.58fr) minmax(320px, 0.42fr);
-  gap: clamp(24px, 4vw, 62px);
-  align-items: start;
+  display: block;
 }
 
 .directory-heading h2 {
@@ -2051,10 +2048,6 @@ div.plain-note {
   .site-footer,
   .footer-disclaimer {
     grid-column: 1;
-  }
-
-  .directory-heading {
-    grid-template-columns: 1fr;
   }
 
   #young-title {
