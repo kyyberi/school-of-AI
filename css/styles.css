@@ -1120,9 +1120,7 @@ div.plain-note {
 
 .map-intro {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(640px, 1fr) minmax(360px, 420px) minmax(140px, 180px);
-  gap: clamp(24px, 3vw, 54px);
+  display: block;
   max-width: 1760px;
   margin-inline: auto;
   padding: clamp(38px, 4.2vw, 68px) clamp(20px, 5vw, 80px) clamp(24px, 3vw, 38px);
@@ -1137,7 +1135,7 @@ div.plain-note {
 }
 
 .map-intro h1 {
-  max-width: 1040px;
+  max-width: 1320px;
   color: var(--blue-dark);
   font-size: clamp(3rem, 4vw, 4rem);
   line-height: 0.98;
@@ -1155,8 +1153,8 @@ div.plain-note {
 }
 
 .map-copy-column {
-  max-width: 520px;
-  margin-top: 28px;
+  max-width: 1100px;
+  margin-top: 18px;
 }
 
 .map-copy-column p {
@@ -1202,43 +1200,6 @@ div.plain-note {
 
 .map-action span {
   margin-left: 10px;
-}
-
-.map-note {
-  position: relative;
-  justify-self: end;
-  align-self: start;
-  width: 210px;
-  margin: 12px 0 0;
-  color: var(--blue-dark);
-  font-size: 1rem;
-  font-weight: 850;
-  line-height: 1.18;
-  text-align: center;
-  transform: rotate(-7deg);
-}
-
-.map-note::before,
-.map-note::after {
-  content: "";
-  position: absolute;
-  height: 4px;
-  background: var(--gold);
-  border-radius: 999px;
-}
-
-.map-note::before {
-  width: 40px;
-  left: 22px;
-  top: -10px;
-  transform: rotate(24deg);
-}
-
-.map-note::after {
-  width: 52px;
-  right: 16px;
-  bottom: -13px;
-  transform: rotate(-16deg);
 }
 
 .map-workspace {
@@ -1366,12 +1327,26 @@ div.plain-note {
 
 .map-detail-panel {
   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   align-content: start;
   min-height: min(76vh, 800px);
   padding: clamp(22px, 2.4vw, 34px);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 16px 36px rgba(7, 27, 61, 0.08);
   color: var(--blue-ink);
+}
+
+.map-suggest-panel {
+  margin-top: clamp(24px, 4vw, 48px);
+  padding-top: 22px;
+  border-top: 1px solid rgba(7, 27, 61, 0.14);
+}
+
+.map-suggest-panel p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 0.96rem;
+  font-weight: 900;
 }
 
 .map-location-details {
@@ -1990,16 +1965,6 @@ div.plain-note {
   font-weight: 900;
 }
 
-@media (max-width: 1280px) {
-  .map-intro {
-    grid-template-columns: minmax(0, 1fr) minmax(330px, 420px);
-  }
-
-  .map-note {
-    display: none;
-  }
-}
-
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: 184px 1fr auto;
@@ -2095,20 +2060,12 @@ div.plain-note {
     grid-column: 1;
   }
 
-  .map-intro,
   .directory-heading {
     grid-template-columns: 1fr;
   }
 
   #young-title {
     white-space: normal;
-  }
-
-  .map-note {
-    justify-self: start;
-    width: auto;
-    max-width: 240px;
-    margin-top: 4px;
   }
 
   .starter-browser {
@@ -2125,10 +2082,6 @@ div.plain-note {
   .starter-filter-rail fieldset,
   .starter-filter-rail fieldset + fieldset {
     margin-top: 0;
-  }
-
-  .map-copy-column {
-    max-width: 680px;
   }
 
   .map-intro h1 {
@@ -2517,10 +2470,6 @@ div.plain-note {
 
   .directory-item img {
     min-height: 132px;
-  }
-
-  .map-note {
-    display: none;
   }
 
   .map-intro h1 {
