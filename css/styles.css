@@ -323,8 +323,17 @@ p {
   margin-top: 24px;
 }
 
-.hero-actions .button {
+.hero-actions .button,
+.section-actions .button {
   margin-top: 0;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
 }
 
 .button.secondary {
