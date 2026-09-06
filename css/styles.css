@@ -1389,9 +1389,27 @@ div.plain-note {
   font-weight: 850;
 }
 
+.map-location-details .detail-partner {
+  margin-top: 12px;
+  color: var(--blue-dark);
+  font-size: 1.04rem;
+  font-weight: 900;
+}
+
 .map-location-details .detail-meta {
   color: rgba(7, 27, 61, 0.72);
   font-size: 0.9rem;
+}
+
+.map-location-details .detail-block {
+  color: rgba(7, 27, 61, 0.78);
+  font-size: 0.92rem;
+}
+
+.map-location-details .detail-block strong,
+.map-location-details .detail-source strong {
+  color: var(--blue-dark);
+  font-weight: 900;
 }
 
 .map-location-details .detail-source {
@@ -1405,6 +1423,13 @@ div.plain-note {
 
 .map-location-details .button {
   margin-top: 18px;
+}
+
+.detail-section-label {
+  margin-top: 20px;
+  color: var(--green);
+  font-size: 0.86rem;
+  font-weight: 900;
 }
 
 .school-cluster {

@@ -21,6 +21,7 @@
       cityReason: "A possible community location for future School4AI activity.",
       noSelectionTitle: "Select a location",
       noSelectionText: "Click a city or partner marker on the map to see why that place could matter for School4AI.",
+      nextStep: "What happens next",
       viewDetails: "View details",
       noResults: "No matching locations found. Try another city or search term.",
       resultSingular: "1 possible location",
@@ -49,6 +50,7 @@
       cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
       noSelectionTitle: "Chọn một địa điểm",
       noSelectionText: "Bấm vào một thành phố hoặc điểm đối tác trên bản đồ để xem vì sao nơi đó có thể phù hợp với School4AI.",
+      nextStep: "Bước tiếp theo",
       viewDetails: "Xem chi tiết",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
       resultSingular: "1 địa điểm tiềm năng",
@@ -584,10 +586,13 @@
     }
     const isPartner = location && location.kind === "partner";
     const title = location ? location.city : content.noSelectionTitle;
-    const partnerName = isPartner ? `<p><strong>${escapeHtml(location.name)}</strong></p>` : "";
-    const source = isPartner ? `<p class="detail-source">${content.source} · <a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : "";
-    const locality = location && isPartner ? location.address : location ? location.city : "";
+    const partnerName = isPartner ? `<p class="detail-partner">${escapeHtml(location.name)}</p>` : "";
+    const address = isPartner ? `<p class="detail-block"><strong>${content.address}</strong><br>${escapeHtml(location.address)}</p>` : "";
+    const source = isPartner ? `<p class="detail-source"><strong>${content.source}</strong><br><a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : "";
+    const locality = location && !isPartner ? `<p class="detail-meta">${escapeHtml(location.city)}</p>` : "";
     const reason = location ? isPartner ? content.partnerReason : location.city === "Yên Bái" ? content.startingPoint : content.cityReason : content.noSelectionText;
+    const status = location ? `<p class="detail-block"><strong>${content.coordinator}</strong><br>${content.status}</p>` : "";
+    const prompt = location ? `<p>${content.prompt}</p>` : "";
     const type = location ? isPartner ? content.partnerCard : content.invitationCity : content.invitation;
     const ctaCity = location ? location.city : lang === "vi" ? "khu vuc cua toi" : "my area";
     const href = `https://wa.me/971509718065?text=${encodeURIComponent(content.whatsapp.replace("{city}", ctaCity))}`;
@@ -596,8 +601,12 @@
       <h2>${escapeHtml(title)}</h2>
       ${partnerName}
       <p>${escapeHtml(reason)}</p>
-      ${locality ? `<p class="detail-meta">${escapeHtml(locality)}</p>` : ""}
+      ${locality}
+      ${address}
       ${source}
+      ${status}
+      ${location ? `<p class="detail-section-label">${content.nextStep}</p>` : ""}
+      ${prompt}
       <a class="button primary whatsapp-link" href="${href}">${content.cta}</a>
     `;
   }
