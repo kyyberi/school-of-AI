@@ -1150,6 +1150,10 @@ div.plain-note {
   line-height: 0.98;
 }
 
+.map-intro h1 strong {
+  font-weight: inherit;
+}
+
 .map-copy-column {
   max-width: 520px;
   margin-top: 28px;
@@ -1553,6 +1557,12 @@ div.plain-note {
   color: var(--blue-dark);
   font-size: clamp(2.15rem, 3.35vw, 3.55rem);
   line-height: 0.98;
+}
+
+.directory-heading h2 span {
+  color: var(--green);
+  font-size: 0.72em;
+  white-space: nowrap;
 }
 
 .directory-heading p {

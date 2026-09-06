@@ -487,6 +487,8 @@
   const directoryList = document.getElementById("location-directory-list");
   const directoryFilters = document.querySelector(".directory-filters");
   const mapLocationDetails = document.getElementById("map-location-details");
+  const locationCountElements = document.querySelectorAll("[data-location-count]");
+  const directoryTotalElements = document.querySelectorAll("[data-directory-total]");
   const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hạ Long", "Nha Trang", "Thái Nguyên"]);
   const cityImages = {
     "Bà Rịa": "ba-ria-vung-tau",
@@ -820,6 +822,16 @@
     return a.city.localeCompare(b.city, "vi") || a.name.localeCompare(b.name, "vi");
   });
 
+  function renderLocationTotals() {
+    const total = directoryLocations.length.toLocaleString(lang === "vi" ? "vi-VN" : "en");
+    locationCountElements.forEach((element) => {
+      element.textContent = total;
+    });
+    directoryTotalElements.forEach((element) => {
+      element.textContent = `(${total})`;
+    });
+  }
+
   function getFilteredLocations() {
     const term = normalize(searchInput ? searchInput.value : "");
     const type = getSelectedRadio("location-type");
@@ -911,6 +923,7 @@
     map.fitBounds(clusterGroup.getBounds().pad(0.18));
   }
 
+  renderLocationTotals();
   renderDirectory();
   renderLocationDetail(null);
   if (searchInput) {
