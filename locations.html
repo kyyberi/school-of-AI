@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-    <link rel="stylesheet" href="css/styles.css?v=20260906-32">
+    <link rel="stylesheet" href="css/styles.css?v=20260907-1">
   </head>
   <body class="map-page" data-map-lang="vi">
     <header class="site-header">
@@ -63,10 +63,10 @@
     <main id="top" class="locations-shell">
       <section class="map-intro" aria-labelledby="map-title">
         <div class="map-title-column">
-          <h1 id="map-title"><span>Hơn <strong data-location-count>85</strong> địa điểm có thể bắt đầu</span></h1>
+          <h1 id="map-title"><span><strong data-location-count>89</strong> địa điểm có thể bắt đầu</span></h1>
         </div>
         <div class="map-copy-column">
-          <p>Chúng tôi đang lập bản đồ các cộng đồng, trường tiếng Anh, điều phối viên địa phương và những người có thể hỗ trợ đưa các cuối tuần School4AI đến nhiều nơi khác nhau tại Việt Nam. Bản đồ này giúp xác định nơi hoạt động đầu tiên và các hoạt động tiếp theo có thể diễn ra.</p>
+          <p>Chúng tôi đang lập bản đồ các cộng đồng, trường tiếng Anh, tổ chức ICT, điều phối viên địa phương và những người có thể hỗ trợ đưa các cuối tuần School4AI đến nhiều nơi khác nhau tại Việt Nam. Bản đồ này giúp xác định nơi nhu cầu, năng lực học tập và năng lực cố vấn có thể gặp nhau.</p>
         </div>
       </section>
 
@@ -86,18 +86,19 @@
       <section class="location-directory" aria-labelledby="directory-title">
         <div class="directory-heading">
           <div>
-            <h2 id="directory-title">Hơn <span data-directory-total>85</span> địa điểm đã xác định để khởi động School for AI</h2>
+            <h2 id="directory-title"><span data-directory-total>89</span> địa điểm đã xác định để khởi động School for AI</h2>
           </div>
         </div>
         <div class="directory-browser">
           <form class="directory-filters" role="search" aria-label="Lọc địa điểm tiềm năng">
             <label class="directory-search">
               <span>Tìm kiếm</span>
-              <input id="location-search" type="search" autocomplete="off" placeholder="Thành phố, đối tác hoặc địa chỉ">
+              <input id="location-search" type="search" autocomplete="off" placeholder="Thành phố, đối tác, công ty hoặc địa chỉ">
             </label>
             <fieldset>
               <legend>Loại</legend>
               <label><input type="radio" name="location-type" value="" checked>Tất cả</label>
+              <label><input type="radio" name="location-type" value="cluster">Cụm điểm nóng</label>
               <label><input type="radio" name="location-type" value="invitation">Thành phố được đề xuất</label>
               <label><input type="radio" name="location-type" value="partner">Đối tác trường tiếng Anh</label>
             </fieldset>
@@ -126,6 +127,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="assets/data/vietnam-boundary.js?v=20260906-7"></script>
-    <script src="js/locations-map.js?v=20260906-23"></script>
+    <script src="js/locations-map.js?v=20260907-1"></script>
   </body>
 </html>

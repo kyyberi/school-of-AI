@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-    <link rel="stylesheet" href="css/styles.css?v=20260906-32">
+    <link rel="stylesheet" href="css/styles.css?v=20260907-1">
   </head>
   <body class="map-page" data-map-lang="en">
     <header class="site-header">
@@ -63,10 +63,10 @@
     <main id="top" class="locations-shell">
       <section class="map-intro" aria-labelledby="map-title">
         <div class="map-title-column">
-          <h1 id="map-title"><span>Over <strong data-location-count>85</strong> possible places to start</span></h1>
+          <h1 id="map-title"><span><strong data-location-count>89</strong> possible places to start</span></h1>
         </div>
         <div class="map-copy-column">
-          <p>We are mapping communities, English schools, local coordinators and other people who could help bring School4AI weekends to different parts of Vietnam. This map helps identify where the first and future activities could happen.</p>
+          <p>We are mapping communities, English schools, ICT organizations, local coordinators and other people who could help bring School4AI weekends to different parts of Vietnam. This map helps identify where demand, learning capacity and mentor capacity can meet.</p>
         </div>
       </section>
 
@@ -86,18 +86,19 @@
       <section class="location-directory" aria-labelledby="directory-title">
         <div class="directory-heading">
           <div>
-            <h2 id="directory-title">Over <span data-directory-total>85</span> identified locations to ignite School for AI</h2>
+            <h2 id="directory-title"><span data-directory-total>89</span> identified locations to ignite School for AI</h2>
           </div>
         </div>
         <div class="directory-browser">
           <form class="directory-filters" role="search" aria-label="Filter possible locations">
             <label class="directory-search">
               <span>Search</span>
-              <input id="location-search" type="search" autocomplete="off" placeholder="City, partner, or address">
+              <input id="location-search" type="search" autocomplete="off" placeholder="City, partner, company, or address">
             </label>
             <fieldset>
               <legend>Type</legend>
               <label><input type="radio" name="location-type" value="" checked>All</label>
+              <label><input type="radio" name="location-type" value="cluster">Hotspot cluster</label>
               <label><input type="radio" name="location-type" value="invitation">Invitation city</label>
               <label><input type="radio" name="location-type" value="partner">English school partner</label>
             </fieldset>
@@ -126,6 +127,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="assets/data/vietnam-boundary.js?v=20260906-7"></script>
-    <script src="js/locations-map.js?v=20260906-23"></script>
+    <script src="js/locations-map.js?v=20260907-1"></script>
   </body>
 </html>

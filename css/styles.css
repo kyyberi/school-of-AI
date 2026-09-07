@@ -1673,6 +1673,12 @@ div.plain-note {
   box-shadow: 0 18px 34px rgba(7, 27, 61, 0.08);
 }
 
+.directory-item.cluster-item {
+  grid-template-columns: minmax(140px, 0.28fr) minmax(0, 0.72fr);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(222, 238, 231, 0.88));
+  border-left: 4px solid var(--green);
+}
+
 .directory-item.is-selected {
   background: var(--white);
   box-shadow: 0 0 0 2px rgba(39, 118, 83, 0.7), 0 18px 34px rgba(7, 27, 61, 0.1);
@@ -1735,6 +1741,21 @@ div.plain-note {
   line-height: 1.36;
 }
 
+.directory-candidates {
+  margin: 8px 0 0;
+  color: var(--blue-dark);
+  font-size: 0.76rem;
+  font-weight: 820;
+  line-height: 1.35;
+}
+
+.candidate-disclosure {
+  margin: 8px 0 0;
+  color: rgba(7, 27, 61, 0.62);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
 .directory-locality {
   margin: 7px 0 0;
   color: rgba(7, 27, 61, 0.72);
@@ -1775,6 +1796,48 @@ div.plain-note {
 .directory-actions button:focus-visible {
   color: var(--blue-dark);
   text-decoration: underline;
+}
+
+.detail-candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.candidate-list,
+.candidate-pairings {
+  display: grid;
+  gap: 6px;
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.candidate-list li,
+.candidate-pairings li {
+  color: var(--blue-ink);
+  font-size: 0.82rem;
+  line-height: 1.32;
+}
+
+.candidate-list a {
+  color: var(--blue-dark);
+  font-weight: 820;
+  text-decoration: none;
+}
+
+.candidate-list a:hover,
+.candidate-list a:focus-visible {
+  text-decoration: underline;
+}
+
+.candidate-pairings span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(7, 27, 61, 0.58);
+  font-size: 0.72rem;
+  font-weight: 760;
 }
 
 .directory-empty {
@@ -2492,8 +2555,18 @@ div.plain-note {
     padding: 10px;
   }
 
+  .directory-item.cluster-item {
+    grid-template-columns: 1fr;
+    border-left: 0;
+    border-top: 4px solid var(--green);
+  }
+
   .directory-item img {
     min-height: 132px;
+  }
+
+  .detail-candidate-grid {
+    grid-template-columns: 1fr;
   }
 
   .map-intro h1 {

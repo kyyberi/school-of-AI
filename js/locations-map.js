@@ -10,14 +10,22 @@
       startingPoint: "A possible School4AI community location in Vietnam.",
       possibleLocation: "A possible School4AI community location in Vietnam.",
       possiblePartner: "English language schools are useful local partner leads for space, students, parents, and teachers.",
+      possibleCluster: "A possible local combination where learner demand, English-learning capacity, and ICT mentor capacity overlap.",
       address: "Address",
       source: "Source",
       invitationCity: "Possible School4AI city",
       partnerCard: "English school partner",
+      clusterCard: "Candidate local combination",
       priorityCandidate: "Priority candidate",
       partnerReason: "Useful because there is already a local English-school partner with access to students, parents, teachers, and possible space.",
       cityReason: "A possible community location for future School4AI activity.",
+      clusterReason: "Strong hotspot because ICT organizations and English-learning providers are both visible in this city.",
       localLeadReason: "A useful local lead for students, parents, teachers, and possible space.",
+      candidateDisclosure: "Candidate organizations are identified from public information about local presence and activities. No partnership or affiliation is implied unless explicitly stated.",
+      ictCandidates: "ICT candidates",
+      englishCandidates: "English-learning candidates",
+      examplePairings: "Possible local combinations",
+      pairingStatus: "Candidate pairing only",
       noSelectionTitle: "Select a location",
       noSelectionText: "Click a city or partner marker on the map to see why that place could matter for School4AI.",
       nextStep: "What happens next",
@@ -25,6 +33,7 @@
       viewLocation: "View location",
       noResults: "No matching locations found. Try another city or search term.",
       photoSource: "Photo source",
+      statusHotspot: "Hotspot cluster",
       statusStrong: "Strong lead",
       statusExploring: "Exploring",
       statusOpen: "Open invitation",
@@ -41,14 +50,22 @@
       startingPoint: "Một địa điểm cộng đồng School4AI tiềm năng tại Việt Nam.",
       possibleLocation: "Một địa điểm cộng đồng School4AI tiềm năng tại Việt Nam.",
       possiblePartner: "Các trung tâm tiếng Anh là đầu mối địa phương phù hợp về địa điểm, học sinh, phụ huynh và giáo viên.",
+      possibleCluster: "Một tổ hợp địa phương tiềm năng nơi nhu cầu học tập, năng lực tiếng Anh và năng lực cố vấn ICT cùng xuất hiện.",
       address: "Địa chỉ",
       source: "Nguồn",
       invitationCity: "Thành phố School4AI tiềm năng",
       partnerCard: "Đối tác trung tâm tiếng Anh",
+      clusterCard: "Tổ hợp địa phương tiềm năng",
       priorityCandidate: "Ứng viên ưu tiên",
       partnerReason: "Hữu ích vì đã có đầu mối trung tâm tiếng Anh địa phương với khả năng tiếp cận học sinh, phụ huynh, giáo viên và địa điểm.",
       cityReason: "Một địa điểm cộng đồng tiềm năng cho hoạt động School4AI trong tương lai.",
+      clusterReason: "Điểm nóng mạnh vì thành phố này có cả tổ chức ICT và đơn vị học tiếng Anh hiện diện rõ ràng.",
       localLeadReason: "Một đầu mối địa phương hữu ích cho học sinh, phụ huynh, giáo viên và địa điểm có thể sử dụng.",
+      candidateDisclosure: "Các tổ chức ứng viên được xác định từ thông tin công khai về sự hiện diện và hoạt động tại địa phương. Không hàm ý quan hệ đối tác hoặc liên kết trừ khi được nêu rõ.",
+      ictCandidates: "Ứng viên ICT",
+      englishCandidates: "Ứng viên học tiếng Anh",
+      examplePairings: "Tổ hợp địa phương có thể có",
+      pairingStatus: "Chỉ là tổ hợp ứng viên",
       noSelectionTitle: "Chọn một địa điểm",
       noSelectionText: "Bấm vào một thành phố hoặc điểm đối tác trên bản đồ để xem vì sao nơi đó có thể phù hợp với School4AI.",
       nextStep: "Bước tiếp theo",
@@ -56,6 +73,7 @@
       viewLocation: "Xem địa điểm",
       noResults: "Không tìm thấy địa điểm phù hợp. Hãy thử thành phố hoặc từ khóa khác.",
       photoSource: "Nguồn ảnh",
+      statusHotspot: "Cụm điểm nóng",
       statusStrong: "Đầu mối mạnh",
       statusExploring: "Đang tìm hiểu",
       statusOpen: "Lời mời mở",
@@ -471,6 +489,80 @@
     }
   ];
 
+  const candidateClusters = [
+    {
+      city: "Hà Nội",
+      clusterOrder: 1,
+      lat: 21.0278,
+      lng: 105.8342,
+      ictCandidates: [
+        { name: "NTQ Solution", sourceUrl: "https://ntq.com.vn/vi/lien-he/" },
+        { name: "SotaTek", sourceUrl: "https://www.sotatek.com/careers-list/" },
+        { name: "Rikkeisoft", sourceUrl: "https://rikkeisoft.com/" },
+        { name: "NashTech", sourceUrl: "https://www.nashtechglobal.com/our-locations" },
+        { name: "FPT", sourceUrl: "https://fpt.com/en/contact" }
+      ],
+      englishCandidates: [
+        { name: "ILA Vietnam", sourceUrl: "https://ila.edu.vn/en/centers" },
+        { name: "Apollo English", sourceUrl: "https://apollo.edu.vn/en/center-locations" },
+        { name: "British Council Hanoi", sourceUrl: "https://www.britishcouncil.vn/en/english-courses/teaching-centre/hanoi" }
+      ],
+      pairings: ["NTQ Solution + ILA Hanoi", "SotaTek + Apollo Hanoi", "NashTech + British Council Hanoi"]
+    },
+    {
+      city: "TP. Hồ Chí Minh",
+      clusterOrder: 2,
+      lat: 10.8231,
+      lng: 106.6297,
+      ictCandidates: [
+        { name: "NashTech", sourceUrl: "https://www.nashtechglobal.com/our-locations" },
+        { name: "KMS Technology", sourceUrl: "https://kms-technology.com/contact/" },
+        { name: "SotaTek", sourceUrl: "https://www.sotatek.com/careers-list/" },
+        { name: "Rikkeisoft", sourceUrl: "https://rikkeisoft.com/" },
+        { name: "FPT", sourceUrl: "https://fpt.com/en/contact" },
+        { name: "Axon Active", sourceUrl: "https://axonactive.com/" }
+      ],
+      englishCandidates: [
+        { name: "ILA Vietnam", sourceUrl: "https://ila.edu.vn/en/centers" },
+        { name: "Apollo English", sourceUrl: "https://apollo.edu.vn/en/center-locations" }
+      ],
+      pairings: ["KMS Technology + ILA Ho Chi Minh City", "NashTech + Apollo Ho Chi Minh City", "Axon Active + ILA Ho Chi Minh City"]
+    },
+    {
+      city: "Đà Nẵng",
+      clusterOrder: 3,
+      lat: 16.0544,
+      lng: 108.2022,
+      ictCandidates: [
+        { name: "Axon Active", sourceUrl: "https://axonactive.com/" },
+        { name: "KMS Technology", sourceUrl: "https://kms-technology.com/contact/" },
+        { name: "SotaTek", sourceUrl: "https://www.sotatek.com/careers-list/" },
+        { name: "Rikkeisoft", sourceUrl: "https://rikkeisoft.com/" },
+        { name: "FPT", sourceUrl: "https://fpt.com/en/contact" }
+      ],
+      englishCandidates: [
+        { name: "ILA Da Nang", sourceUrl: "https://ila.edu.vn/en/centers" },
+        { name: "Apollo Da Nang", sourceUrl: "https://apollo.edu.vn/en/center-locations" }
+      ],
+      pairings: ["Axon Active + Apollo Da Nang", "KMS Technology + ILA Da Nang", "SotaTek + Apollo Da Nang"]
+    },
+    {
+      city: "Cần Thơ",
+      clusterOrder: 4,
+      lat: 10.0452,
+      lng: 105.7469,
+      ictCandidates: [
+        { name: "Axon Active", sourceUrl: "https://axonactive.com/" },
+        { name: "FPT", sourceUrl: "https://fpt.com/en/contact" }
+      ],
+      englishCandidates: [
+        { name: "ILA Can Tho", sourceUrl: "https://ila.edu.vn/en/centers" },
+        { name: "Apollo Can Tho", sourceUrl: "https://apollo.edu.vn/en/center-locations" }
+      ],
+      pairings: ["Axon Active + ILA Can Tho", "FPT Can Tho + Apollo Can Tho"]
+    }
+  ];
+
   const mapElement = document.getElementById("locations-map");
   const dialog = document.getElementById("location-dialog");
   const dialogContent = document.getElementById("location-dialog-content");
@@ -480,7 +572,7 @@
   const mapLocationDetails = document.getElementById("map-location-details");
   const locationCountElements = document.querySelectorAll("[data-location-count]");
   const directoryTotalElements = document.querySelectorAll("[data-directory-total]");
-  const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hạ Long", "Nha Trang", "Thái Nguyên"]);
+  const priorityCities = new Set(["Bà Rịa", "Bắc Ninh", "Biên Hòa", "Cần Thơ", "Đà Nẵng", "Hà Nội", "Hạ Long", "Nha Trang", "TP. Hồ Chí Minh", "Thái Nguyên"]);
   const cityImages = {
     "Bà Rịa": "ba-ria-vung-tau",
     "Vũng Tàu": "ba-ria-vung-tau",
@@ -606,6 +698,9 @@
   }
 
   function getLocationKind(location) {
+    if (location && location.kind === "cluster") {
+      return "cluster";
+    }
     return location && location.kind === "partner" ? "partner" : "invitation";
   }
 
@@ -614,8 +709,9 @@
       return "";
     }
     const kind = getLocationKind(location);
+    const markerKind = kind === "cluster" ? "invitation" : kind;
     const name = kind === "partner" ? location.name : location.city;
-    return `${kind}:${name}:${location.city}`;
+    return `${markerKind}:${name}:${location.city}`;
   }
 
   function getDefaultIcon(location) {
@@ -657,6 +753,9 @@
   }
 
   function getStatusLabel(status) {
+    if (status === "hotspot") {
+      return content.statusHotspot;
+    }
     if (status === "strong") {
       return content.statusStrong;
     }
@@ -670,7 +769,8 @@
     const region = getLocationRegion(location);
     const imageKey = cityImages[location.city] || regionalFallbacks[region];
     const isPartner = location.kind === "partner";
-    const statusValue = location.priority ? "strong" : isPartner ? "exploring" : "open";
+    const isCluster = location.kind === "cluster";
+    const statusValue = isCluster ? "hotspot" : location.priority ? "strong" : isPartner ? "exploring" : "open";
     const photoSourceUrl = locationPhotoSources[imageKey];
     return {
       ...location,
@@ -800,17 +900,33 @@
     }
     setSelectedMarker(location);
     const isPartner = location && location.kind === "partner";
+    const isCluster = location && location.kind === "cluster";
     const title = location ? location.city : content.noSelectionTitle;
     const partnerName = isPartner ? `<p class="detail-partner">${escapeHtml(location.name)}</p>` : "";
     const address = isPartner ? `<p class="detail-block"><strong>${content.address}</strong><br>${escapeHtml(location.address)}</p>` : "";
     const source = isPartner ? `<p class="detail-source"><strong>${content.source}</strong><br><a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : "";
     const locality = location && !isPartner ? `<p class="detail-meta">${escapeHtml(location.city)}</p>` : "";
-    const reason = location ? isPartner ? content.partnerReason : content.cityReason : content.noSelectionText;
+    const reason = location ? isCluster ? content.clusterReason : isPartner ? content.partnerReason : content.cityReason : content.noSelectionText;
     const status = location ? `<p class="detail-block"><strong>${content.coordinator}</strong><br>${content.status}</p>` : "";
     const prompt = location ? `<p>${content.prompt}</p>` : "";
-    const type = location ? isPartner ? content.partnerCard : content.invitationCity : content.invitation;
+    const type = location ? isCluster ? content.clusterCard : isPartner ? content.partnerCard : content.invitationCity : content.invitation;
     const ctaCity = location ? location.city : lang === "vi" ? "khu vuc cua toi" : "my area";
     const href = `https://wa.me/971509718065?text=${encodeURIComponent(content.whatsapp.replace("{city}", ctaCity))}`;
+    const clusterBlock = isCluster ? `
+      <div class="detail-candidate-grid">
+        <div>
+          <p class="detail-section-label">${content.ictCandidates}</p>
+          ${renderCandidateLinks(location.ictCandidates)}
+        </div>
+        <div>
+          <p class="detail-section-label">${content.englishCandidates}</p>
+          ${renderCandidateLinks(location.englishCandidates)}
+        </div>
+      </div>
+      <p class="detail-section-label">${content.examplePairings}</p>
+      ${renderPairings(location.pairings)}
+      <p class="candidate-disclosure">${content.candidateDisclosure}</p>
+    ` : "";
     mapLocationDetails.innerHTML = `
       <p class="detail-type">${type}</p>
       <h2>${escapeHtml(title)}</h2>
@@ -819,11 +935,24 @@
       ${locality}
       ${address}
       ${source}
+      ${clusterBlock}
       ${status}
       ${location ? `<p class="detail-section-label">${content.nextStep}</p>` : ""}
       ${prompt}
       <a class="button primary whatsapp-link" href="${href}">${content.cta}</a>
     `;
+  }
+
+  function renderCandidateLinks(candidates) {
+    return `<ul class="candidate-list">${candidates.map((candidate) => `
+      <li><a href="${escapeHtml(candidate.sourceUrl)}">${escapeHtml(candidate.name)}</a></li>
+    `).join("")}</ul>`;
+  }
+
+  function renderPairings(pairings) {
+    return `<ul class="candidate-pairings">${pairings.map((pairing) => `
+      <li>${escapeHtml(pairing)} <span>${content.pairingStatus}</span></li>
+    `).join("")}</ul>`;
   }
 
   locations.forEach((location) => {
@@ -861,13 +990,29 @@
       kind: "partner",
       priority: priorityCities.has(location.city),
       reason: content.partnerReason
+    })),
+    ...candidateClusters.map((location) => ({
+      ...location,
+      kind: "cluster",
+      name: location.city,
+      priority: true,
+      reason: content.clusterReason
     }))
   ].map(enrichDirectoryLocation).sort((a, b) => {
     if (a.priority !== b.priority) {
       return a.priority ? -1 : 1;
     }
     if (a.kind !== b.kind) {
+      if (a.kind === "cluster") {
+        return -1;
+      }
+      if (b.kind === "cluster") {
+        return 1;
+      }
       return a.kind === "partner" ? -1 : 1;
+    }
+    if (a.kind === "cluster") {
+      return a.clusterOrder - b.clusterOrder;
     }
     return a.city.localeCompare(b.city, "vi") || a.name.localeCompare(b.name, "vi");
   });
@@ -887,7 +1032,12 @@
     const type = getSelectedRadio("location-type");
     const region = getSelectedRadio("location-region");
     return directoryLocations.filter((location) => {
-      const haystack = normalize([location.name, location.city, location.address, location.reason].filter(Boolean).join(" "));
+      const candidateText = [
+        ...(location.ictCandidates || []).map((candidate) => candidate.name),
+        ...(location.englishCandidates || []).map((candidate) => candidate.name),
+        ...(location.pairings || [])
+      ].join(" ");
+      const haystack = normalize([location.name, location.city, location.address, location.reason, candidateText].filter(Boolean).join(" "));
       const matchesSearch = !term || haystack.includes(term);
       const matchesType = !type || location.kind === type;
       const matchesRegion = !region || location.region === region;
@@ -901,20 +1051,26 @@
     }
     const entries = items.map((location, index) => {
       const isPartner = location.kind === "partner";
+      const isCluster = location.kind === "cluster";
       const sourceLink = isPartner ? `<a href="${escapeHtml(location.sourceUrl)}">${content.source}</a>` : "";
       const photoSource = location.photoSourceUrl ? `<a href="${escapeHtml(location.photoSourceUrl)}">${content.photoSource}</a>` : "";
       const locality = isPartner ? location.address : location.city;
       const partnerName = isPartner ? `<p class="directory-partner">${escapeHtml(location.name)}</p>` : "";
+      const candidateNames = isCluster ? `
+        <p class="directory-candidates">${escapeHtml([...location.ictCandidates, ...location.englishCandidates].map((candidate) => candidate.name).join(" · "))}</p>
+        <p class="candidate-disclosure">${content.candidateDisclosure}</p>
+      ` : "";
       const sourceItems = [sourceLink, photoSource].filter(Boolean).join("");
       return `
-        <article class="directory-item ${isPartner ? "partner-item" : "city-item"} ${location.priority ? "priority-item" : ""}">
+        <article class="directory-item ${isCluster ? "cluster-item" : isPartner ? "partner-item" : "city-item"} ${location.priority ? "priority-item" : ""}">
           <img src="${escapeHtml(location.image)}" alt="${escapeHtml(location.imageAlt)}" loading="lazy">
           <div class="directory-item-copy">
             <p class="directory-priority">${escapeHtml(location.statusLabel)}</p>
             <h3>${escapeHtml(location.city)}</h3>
             ${partnerName}
-            <p class="directory-type">${isPartner ? content.partnerCard : content.invitationCity}</p>
+            <p class="directory-type">${isCluster ? content.clusterCard : isPartner ? content.partnerCard : content.invitationCity}</p>
             <p class="directory-reason">${escapeHtml(location.reason)}</p>
+            ${candidateNames}
             <p class="directory-locality">${escapeHtml(locality)}</p>
             <div class="directory-actions">
               ${sourceItems}
