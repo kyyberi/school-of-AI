@@ -7,7 +7,7 @@
       status: "No School4AI weekend is scheduled here yet.",
       coordinator: "Local coordinator wanted",
       prompt: "If you are a parent, teacher, company, or community helper in this area, contact us and we can discuss how to get started.",
-      startingPoint: "Starting point for the School4AI idea.",
+      startingPoint: "A possible School4AI community location in Vietnam.",
       possibleLocation: "A possible School4AI community location in Vietnam.",
       possiblePartner: "English language schools are useful local partner leads for space, students, parents, and teachers.",
       address: "Address",
@@ -38,7 +38,7 @@
       status: "Chưa có cuối tuần School4AI nào được lên lịch tại đây.",
       coordinator: "Cần người điều phối địa phương",
       prompt: "Nếu bạn là phụ huynh, giáo viên, doanh nghiệp hoặc người hỗ trợ cộng đồng tại khu vực này, hãy liên hệ để cùng trao đổi cách bắt đầu.",
-      startingPoint: "Điểm bắt đầu của ý tưởng School4AI.",
+      startingPoint: "Một địa điểm cộng đồng School4AI tiềm năng tại Việt Nam.",
       possibleLocation: "Một địa điểm cộng đồng School4AI tiềm năng tại Việt Nam.",
       possiblePartner: "Các trung tâm tiếng Anh là đầu mối địa phương phù hợp về địa điểm, học sinh, phụ huynh và giáo viên.",
       address: "Địa chỉ",
@@ -779,7 +779,7 @@
     dialogContent.innerHTML = `
       <p class="panel-eyebrow">${isPartner ? content.partnerLead : content.invitation}</p>
       <h2 id="location-dialog-title">${escapeHtml(title)}</h2>
-      <p>${isPartner ? content.possiblePartner : location.city === "Yên Bái" ? content.startingPoint : content.possibleLocation}</p>
+      <p>${isPartner ? content.possiblePartner : content.possibleLocation}</p>
       ${isPartner ? `<p><strong>${content.address}</strong><br>${escapeHtml(location.address)}</p>` : ""}
       ${isPartner ? `<p><strong>${content.source}</strong><br><a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : ""}
       <p><strong>${content.coordinator}</strong></p>
@@ -805,7 +805,7 @@
     const address = isPartner ? `<p class="detail-block"><strong>${content.address}</strong><br>${escapeHtml(location.address)}</p>` : "";
     const source = isPartner ? `<p class="detail-source"><strong>${content.source}</strong><br><a href="${escapeHtml(location.sourceUrl)}">${escapeHtml(location.sourceUrl)}</a></p>` : "";
     const locality = location && !isPartner ? `<p class="detail-meta">${escapeHtml(location.city)}</p>` : "";
-    const reason = location ? isPartner ? content.partnerReason : location.city === "Yên Bái" ? content.startingPoint : content.cityReason : content.noSelectionText;
+    const reason = location ? isPartner ? content.partnerReason : content.cityReason : content.noSelectionText;
     const status = location ? `<p class="detail-block"><strong>${content.coordinator}</strong><br>${content.status}</p>` : "";
     const prompt = location ? `<p>${content.prompt}</p>` : "";
     const type = location ? isPartner ? content.partnerCard : content.invitationCity : content.invitation;
@@ -854,7 +854,7 @@
       ...location,
       kind: "invitation",
       name: location.city,
-      reason: location.city === "Yên Bái" ? content.startingPoint : content.cityReason
+      reason: content.cityReason
     })),
     ...partnerLocations.map((location) => ({
       ...location,
